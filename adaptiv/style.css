@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.container {
+  max-width: 1140px;
+  min-width: 300px;
+  margin: 0 auto; }
+
+.padding-block {
+  padding: 3%; }
+
+.header {
+  min-height: 70px;
+  background-color: darkcyan; }
+
+.content-blue {
+  display: flex;
+  justify-content: space-between; }
+
+.blue {
+  background-color: darkblue;
+  color: #fff;
+  font-size: 40px; }
+
+.blue-1 {
+  height: 400px;
+  width: 65%; }
+
+.parent-mini {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .parent-mini .blue-2,
+  .parent-mini .blue-3 {
+    height: 180px; }
+
+.content-product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.product {
+  width: 330px;
+  min-height: 400px;
+  background-color: darkslateblue;
+  margin-bottom: 3%;
+  margin-right: 15px; }
+
+.product:nth-child(3n) {
+  margin-right: 0; }
+
+.person-block {
+  display: flex; }
+
+.person {
+  flex: 1;
+  margin-left: 1%;
+  margin-right: 1%;
+  display: flex;
+  flex-direction: column; }
+  .person img {
+    align-self: center;
+    width: 80%; }
+
+.footer {
+  min-width: 300px;
+  min-height: 70px;
+  background-color: #ccc; }
+
+@media screen and (max-width: 1100px) {
+  .content-product {
+    justify-content: space-around; }
+
+  .product:nth-child(3n) {
+    margin-right: 15px; }
+
+  .product:nth-child(2n) {
+    margin-right: 0; } }
+@media screen and (max-width: 768px) {
+  .content-blue {
+    flex-direction: column; }
+
+  .blue-1 {
+    width: 100%;
+    margin-bottom: 3%;
+    min-height: 300px; }
+
+  .parent-mini {
+    width: 100%;
+    flex-direction: row; }
+    .parent-mini .blue-2,
+    .parent-mini .blue-3 {
+      width: 48%; }
+
+  .person-block {
+    flex-direction: column; }
+
+  .person {
+    flex-direction: row;
+    margin-bottom: 3%; }
+    .person p {
+      padding: 3%; } }
+@media screen and (max-width: 734px) {
+  .content-product {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center; }
+
+  .product {
+    margin-right: 0; } }
+@media screen and (max-width: 375px) {
+  .blue-1 {
+    height: 200px; }
+
+  .parent-mini {
+    flex-direction: column; }
+    .parent-mini .blue-2 {
+      margin-bottom: 3%; }
+    .parent-mini .blue-2,
+    .parent-mini .blue-3 {
+      width: 100%; }
+
+  .product:nth-child(3n) {
+    margin-right: 0; }
+
+  .person {
+    flex-direction: column; } }
+
+/*# sourceMappingURL=style.css.map */
