@@ -70,7 +70,7 @@ input:focus, summary:focus, button:focus {
   margin: 0 auto; }
   .container__single {
     position: relative;
-    margin-top: calc(25% - 47px); }
+    margin-top: calc(100vw / 1.6 * 0.5 - 23.5px); }
 
 summary::-webkit-details-marker {
   display: none; }
@@ -1721,12 +1721,12 @@ input[type=range] {
     padding: 0; }
   .jcarousel li {
     float: left;
-    width: 100vw; }
+    width: 100vw;
+    height: calc(100vw / 1.6); }
 
 .single {
   margin-bottom: 115px; }
   .single__slider {
-    max-height: 768px;
     background-color: #f7f7f7;
     border: solid 1px #eaeaea; }
     .single__slider_img {
