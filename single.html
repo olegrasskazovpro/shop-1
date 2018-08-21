@@ -5,6 +5,9 @@
     <title>Single page</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -342,12 +345,16 @@
         </div>
     </nav>
     <section>
-        <div class="single-slider">
-            <div class="single-img">
-                <div class="container relative">
-                    <button class="single-slider__button single-slider__button_left">‹</button>
-                    <img src="img/single-woman.jpg" alt="single-woman" class="single-slider__img">
-                    <button class="single-slider__button single-slider__button_right">›</button>
+        <div class="single">
+            <div class="jcarousel single__slider">
+                <ul>
+                    <li><img src="img/single-woman.jpg" alt="single-woman" class="single__slider_img"></li>
+                    <li><img src="img/single-woman-2.jpg" alt="single-woman" class="single__slider_img"></li>
+                    <li><img src="img/single-woman-3.jpg" alt="single-woman" class="single__slider_img"></li>
+                </ul>
+                <div class="container container__single">
+                    <button class="single__button single__button_left jcarousel-prev">‹</button>
+                    <button class="single__button single__button_right jcarousel-next">›</button>
                 </div>
             </div>
             <div class="single-desc container">
@@ -528,5 +535,7 @@
         </div>
     </div>
 </footer>
+<script src="js/main.js"></script>
+<script src="js/jCarousel.js"></script>
 </body>
 </html>
