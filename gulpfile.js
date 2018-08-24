@@ -9,7 +9,6 @@ const sourcemaps = require('gulp-sourcemaps');
 const rigger = require('gulp-rigger');
 const cssmin = require('gulp-clean-css');
 const imagemin = require('gulp-imagemin');
-const imageminPngquant = require('imagemin-pngquant');
 const rimraf = require('rimraf');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;

@@ -14,7 +14,6 @@
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
-    "imagemin-pngquant": "^6.0.0",
     "pump": "^3.0.0",
     "rimraf": "^2.6.2"
   },
