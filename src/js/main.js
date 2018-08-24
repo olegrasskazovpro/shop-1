@@ -6,7 +6,7 @@ class Slider {
   }
 
   init() {
-
+    console.log('Привет');
   }
 }
 

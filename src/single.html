@@ -1,10 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>B-shop</title>
+    <title>Single page</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
 <header class="header">
@@ -43,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            <form action="send.php">
                 <input type="text" placeholder="Search for Item...">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
@@ -333,182 +336,142 @@
             </li>
         </ul>
     </nav>
-
-    <section class="slider">
-        <div class="container slider-content">
-            <div class="slider-text">
-                <h2>THE BRAND</h2>
-                <h4>OF LUXERIOUS <span>FASHION</span></h4>
+    <nav class="breadcrumbs">
+        <div class="container breadcrumbs-flex">
+            <h1>NEW ARRIVALS</h1>
+            <div class="breadcrumbs-links">
+                <a href="index.html">Home</a> / <a href="#">Men</a> / <a href="#" class="active">New Arrivals</a>
             </div>
         </div>
-    </section>
-
-    <section class="container category">
-        <div class="category-left">
-            <div class="big">
-                <a href="product.html">
-                    <h4>HOT DEAL</h4>
-                    <h2>FOR MEN</h2>
-                </a>
+    </nav>
+    <section>
+        <div class="single">
+            <div class="jcarousel single__slider">
+                <ul>
+                    <li><img src="img/single-woman.jpg" alt="single-woman" class="single__slider_img"></li>
+                    <li><img src="img/single-woman-2.jpg" alt="single-woman" class="single__slider_img"></li>
+                    <li><img src="img/single-woman-3.jpg" alt="single-woman" class="single__slider_img"></li>
+                </ul>
+                <div class="container container__single">
+                    <button class="single__button single__button_left jcarousel-prev">‹</button>
+                    <button class="single__button single__button_right jcarousel-next">›</button>
+                </div>
             </div>
-            <div class="small">
-                <a href="#">
-                    <h4>LUXIROUS & TRENDY</h4>
-                    <h2>ACCESORIES</h2>
-                </a>
-            </div>
-        </div>
-        <div class="category-right">
-            <div class="small">
-                <a href="#">
-                    <h4>30% OFFER</h4>
-                    <h2>WOMEN</h2>
-                </a>
-            </div>
-            <div class="big">
-                <a href="#">
-                    <h4>NEW ARRIVALS</h4>
-                    <h2>FOR KIDS</h2>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="container product-block">
-        <h2>Fetured Items</h2>
-        <p>Shop for items based on what we featured in this week</p>
-        <div class="product-box">
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-1.jpg" alt="product-1" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-2.jpg" alt="product-2" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-3.jpg" alt="product-3" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-4.jpg" alt="product-4" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-5.jpg" alt="product-5" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-6.jpg" alt="product-6" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-7.jpg" alt="product-7" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-            <figure class="product-box-a">
-                <a href="single.html">
-                    <img src="img/product-8.jpg" alt="product-8" class="product-img">
-                    <h3>MANGO PEOPLE T-SHORT</h3>
-                    <h4>$52.00</h4>
-                </a>
-                <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
-            </figure>
-        </div>
-        <a href="product.html" class="product-button">Browse All Product<i class="fa fa-long-arrow-right"
-                                                                           aria-hidden="true"></i></a>
-    </section>
-
-    <section class="container feature">
-        <div class="feature-left">
-            <a href="#">
-                <h2>30% <span>OFFER</span></h2>
-                <p>FOR WOMEN</p>
-            </a>
-        </div>
-        <ul class="feature-right">
-            <li>
-                <img src="img/delivery.svg" alt="Free Delivery">
-                <figure>
-                    <span>Free Delivery</span>
-                    <p>Worldwide delivery on all. Authorit tively morph next-generation innovation with extensive
-                        models.</p>
-                </figure>
-            </li>
-            <li>
-                <img src="img/sale.svg" alt="Sales & discounts">
-                <figure>
-                    <span>Sales & discounts</span>
-                    <p>Worldwide delivery on all. Authorit tively morph next-generation innovation with extensive
-                        models.</p>
-                </figure>
-            </li>
-            <li>
-                <img src="img/korona.svg" alt="Quality assurance">
-                <figure>
-                    <span>Quality assurance</span>
-                    <p>Worldwide delivery on all. Authorit tively morph next-generation innovation with extensive
-                        models.</p>
-                </figure>
-            </li>
-        </ul>
-    </section>
-
-    <section class="subscribe">
-        <div class="container flex-between">
-            <div class="feedback">
-                <figure>
-                    <div>
-                        <img src="img/feedback.png" alt="Bin Burhan foto">
-                        <p>“Vestibulum quis porttitor dui! Quisque viverra nunc mi, a&nbsp;pulvinar purus condimentum&nbsp;a. Aliquam
-                            condimentum mattis neque sed pretium”</p>
+            <div class="single-desc container">
+                <div class="single-desc-text">
+                    <div class="single-desc__h3 single-desc__h3_pink">
+                        WOMEN COLLECTION
                     </div>
-                    <p class="feedback-comment">
-                        Bin Burhan<br>
-                        <span>Dhaka, Bd</span>
+                    <p class="single-desc__h2">Moschino Cheap And Chic</p>
+                    <p class="single-desc__p">Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.</p>
+                    <p class="single-desc__h3">
+                        <span>MATERIAL:</span> COTTON
+                        <span>DESIGNER:</span> BINBURHAN
                     </p>
-                </figure>
-                <a href="#"></a><a href="#" class="active"></a><a href="#"></a>
+                    <p class="single-desc__price">$561</p>
+                </div>
+                <div class="single-desc-buy">
+                    <div class="single-desc-sort">
+                        <div>
+                            <p class="single-desc__h3">CHOOSE COLOR</p>
+                            <div class="sort-div sort-div__single">
+                                <select name="color" title="Choose color" class="sort-div__select sort-div__select_single">
+                                    <option value="" selected="">Red</option>
+                                    <option value="">Green</option>
+                                    <option value="">Blue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="single-desc__h3">CHOOSE SIZE</p>
+                            <div class="sort-div sort-div__single">
+                                <select name="size" title="Choose size" class="sort-div__select sort-div__select_single">
+                                    <option value="" selected>XXL</option>
+                                    <option value="">XL</option>
+                                    <option value="">L</option>
+                                    <option value="">M</option>
+                                    <option value="">S</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="single-desc__h3">QUANTITY</p>
+                            <input type="number" class="input-number input-number__single" value="2" placeholder="How many?">
+                        </div>
+                    </div>
+                    <button class="single-desc-button"><span></span>Add to Cart</button>
+                </div>
             </div>
-            <div class="subscribe-form">
-                <h2>Subscribe</h2>
-                <p>FOR OUR NEWLETTER AND PROMOTION</p>
-                <form action="send.php" class="flex">
-                    <input type="email" required placeholder="Enter Your Email"><input type="submit" value="Subscribe">
-                </form>
+        </div>
+    </section>
+    <section>
+        <div class="container you-may-like">
+            <h2>you may like also</h2>
+            <div class="product-box product-box__single">
+                <figure class="product-box-a">
+                    <a href="#">
+                        <img src="img/woman-1.jpg" alt="woman-1" class="product-img">
+                        <h3 class="product-box__h3">MANGO PEOPLE</h3>
+                        <h4 class="product-box__h4">$52.00</h4>
+                    </a>
+                    <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
+                </figure>
+                <figure class="product-box-a">
+                    <a href="#">
+                        <img src="img/woman-2.jpg" alt="woman-2" class="product-img">
+                        <h3 class="product-box__h3">MANGO PEOPLE T-SHORT</h3>
+                        <h4 class="product-box__h4">$52.00</h4>
+                    </a>
+                    <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
+                </figure>
+                <figure class="product-box-a">
+                    <a href="#">
+                        <img src="img/woman-3.jpg" alt="woman-3" class="product-img">
+                        <h3 class="product-box__h3">MANGO PEOPLE T-SHORT</h3>
+                        <h4 class="product-box__h4">$52.00</h4>
+                    </a>
+                    <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
+                </figure>
+                <figure class="product-box-a">
+                    <a href="#">
+                        <img src="img/woman-4.jpg" alt="woman-4" class="product-img">
+                        <h3 class="product-box__h3">MANGO PEOPLE T-SHORT</h3>
+                        <h4 class="product-box__h4">$52.00</h4>
+                    </a>
+                    <a href="cart.html" class="product-to-cart"><img src="img/cart(2).svg" alt="cart"> Add to Cart</a>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <section class="subscribe">
+        <div class="subscribe-opacity">
+            <div class="container flex-between">
+                <div class="feedback">
+                    <figure>
+                        <div>
+                            <img src="img/feedback.png" alt="Bin Burhan foto">
+                            <p>“Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a.
+                                Aliquam
+                                condimentum mattis neque sed pretium”</p>
+                        </div>
+                        <p class="feedback-comment">
+                            Bin Burhan<br>
+                            <span>Dhaka, Bd</span>
+                        </p>
+                    </figure>
+                    <a href="#"></a><a href="#" class="active"></a><a href="#"></a>
+                </div>
+                <div class="subscribe-form">
+                    <h2>Subscribe</h2>
+                    <p>FOR OUR NEWLETTER AND PROMOTION</p>
+                    <form action="send.php" class="flex">
+                        <input type="email" required placeholder="Enter Your Email"><input type="submit" value="Subscribe">
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 </div>
-
 
 <footer>
     <div class="footer container">
@@ -521,8 +484,8 @@
                 multidisciplinary materials before go forward benefits. Intrinsicly syndicate an expanded array of
                 processes and cross-unit partnerships. <br><br>
 
-                Efficiently plagiarize 24/365 action items and focused infomediaries.<br>
-                Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.
+                Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior
+                initiatives for wireless technologies. Dynamically optimize.
             </p>
         </div>
         <nav class="footer-menu-top">
@@ -530,7 +493,7 @@
                 <h2>COMPANY</h2>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="product.html">Shop</a></li>
+                    <li><a href="#">Shop</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">How It Works</a></li>
                     <li><a href="#">Contact</a></li>
@@ -549,7 +512,7 @@
             <div>
                 <h2>SHOP CATEGORY</h2>
                 <ul>
-                    <li><a href="product.html">Men</a></li>
+                    <li><a href="#">Men</a></li>
                     <li><a href="#">Women</a></li>
                     <li><a href="#">Child</a></li>
                     <li><a href="#">Apparel</a></li>
@@ -572,6 +535,7 @@
         </div>
     </div>
 </footer>
-
+<script src="js/main.js"></script>
+<script src="js/jCarousel.js"></script>
 </body>
 </html>
