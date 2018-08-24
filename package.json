@@ -1,0 +1,26 @@
+{
+  "name": "shop-1",
+  "version": "1.0.0",
+  "description": "Online-shop",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olegrasskazovpro/shop-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olegrasskazovpro/shop-1/issues"
+  },
+  "homepage": "https://github.com/olegrasskazovpro/shop-1#readme"
+}
