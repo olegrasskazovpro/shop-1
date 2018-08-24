@@ -47,3 +47,11 @@ let config = {
   port: 9000,
   logPrefix: "Frontend_Devil"
 };
+
+// Build HTML
+gulp.task('html:build', function () {
+  gulp.src(path.src.html) //Выберем файлы по нужному пути
+    .pipe(rigger()) //Прогоним через rigger
+    .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
+    .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+});
