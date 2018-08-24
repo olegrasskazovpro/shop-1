@@ -1,6 +1,8 @@
+//= jCarousel.js
+
 "use strict";
 
-class Slider {
+/*class Slider {
   constructor () {
 
   }
@@ -8,8 +10,7 @@ class Slider {
   init() {
     console.log('Привет');
   }
-}
-
+}*/
 
 (function ($) {
   $(function () {
