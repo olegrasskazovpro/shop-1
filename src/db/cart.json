@@ -1,0 +1,24 @@
+{
+  "total": 60,
+  "countGoods": 3,
+  "contents": [
+    {
+      "id": 1,
+      "name": "Mango people T-short",
+      "price": 10,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "Mango people T-short",
+      "price": 20,
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "name": "Mango people T-short",
+      "price": 30,
+      "quantity": 1
+    }
+  ]
+}
