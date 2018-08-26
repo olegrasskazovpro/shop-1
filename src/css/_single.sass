@@ -1,0 +1,160 @@
+.jcarousel
+  position: relative //Position must be relative!
+  overflow: hidden
+  ul
+    width: 10000em // should be big enough to contain all items
+    position: relative // should be relative or absolute
+    list-style: none
+    margin: 0
+    padding: 0
+  li
+    float: left
+    width: 100vw //jCarousel works best, if the items have a fixed width and height (but it's not required)
+    height: calc(100vw / 1.6)
+
+.single
+  margin-bottom: 115px
+  &__slider
+    background-color: #f7f7f7
+    border: solid 1px #eaeaea
+    &_img
+      width: 100%
+  &__button
+    position: absolute
+    top: 52.82%
+    width: 47px
+    height: 47px
+    background-color: #d8d8d8
+    border: 0
+    font-size: 24px
+    color: #ffffff
+    line-height: 47px
+    text-align: center
+    transition: all $h-speed
+    &:hover
+      background-color: $color-pink
+      border: solid 1px #ffffff
+    &_left
+      left: $padding-l-r
+    &_right
+      right: $padding-l-r
+
+.single-desc-text
+  width: 67.72%
+  margin: 0 auto 46px auto
+
+.single-desc
+  position: relative
+  z-index: 3
+  margin: auto
+  margin-top: -89px
+  width: $single-desc-w
+  padding: 72px 0 120px 0
+  border: solid 1px #eaeaea
+  background-color: #ffffff
+  text-align: center
+  &__h3
+    font-size: 14px
+    font-weight: bold
+    line-height: 3
+    color: #2f2f2f
+    margin-bottom: 15px
+    span
+      color: #b9b9b9
+      margin-left: 38px
+    span:first-child
+      margin-left: 0
+    &_pink
+      position: relative
+      display: inline-block
+      color: $color-pink
+      border-bottom: solid 1px #eaeaea
+      &:after
+        position: absolute
+        content: ''
+        bottom: -2px
+        left: 50%
+        width: 63px
+        height: 3px
+        margin-left: -31.5px
+        background-color: $color-pink
+  &__h2
+    font-size: 18px
+    font-weight: 900
+    line-height: 1.3333333333333333
+    color: #4d4d4d
+    text-transform: uppercase
+    margin-bottom: 55px
+  &__p
+    font-size: 14px
+    font-weight: 300
+    line-height: 1.7142857142857142
+    color: #5e5e5e
+    margin-bottom: 7px
+  &__price
+    font-size: 24px
+    font-weight: bold
+    padding-bottom: 40px
+    text-align: center
+    color: #ef5b70
+    border-bottom: 1px solid #eaeaea
+
+.single-desc-buy
+  width: 58.85%
+  margin: auto
+
+.single-desc-sort
+  display: flex
+  justify-content: space-between
+  margin-bottom: 28px
+  div
+    text-align: left
+    margin-right: 4%
+    width: 85%
+  div:last-child
+    margin-right: 0
+    padding-right: 0
+
+.single-desc-button
+  display: flex
+  justify-content: center
+  width: 100%
+  padding: 15px
+  background-color: #fff
+  border: solid 1px #ef5b70
+  font-size: 16px
+  font-weight: bold
+  text-align: left
+  line-height: 24px
+  color: #ef5b70
+  transition: all $h-speed-fast
+  span
+    display: flex
+    height: 24px
+    width: 26px
+    margin-right: 14px
+    background: url("../img/cart-pink.svg") no-repeat
+    background-size: cover
+  &:hover
+    color: #ffffff
+    background-color: $color-pink
+  &:hover span
+    background: url("../img/cart(2).svg") no-repeat
+    background-size: cover
+
+.you-may-like
+  h2
+    max-width: 50%
+    margin: auto
+    margin-bottom: 70px
+    font-size: 24px
+    font-weight: 900
+    color: #4d4d4d
+    text-transform: uppercase
+    text-align: center
+  &__div
+    display: flex
+    justify-content: space-between
+    div
+      width: 22.895%
+      height: fit-content

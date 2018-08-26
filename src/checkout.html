@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+//= template/header.html
+
+<div class="content">
+    <nav class="breadcrumbs">
+        <div class="container breadcrumbs-flex">
+            <h1>NEW ARRIVALS</h1>
+            <div class="breadcrumbs-links">
+                <a href="index.html">Home</a> / <a href="#">Men</a> / <a href="#" class="active">New Arrivals</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container checkout">
+        <details class="checkout-details" open>
+            <summary class="checkout-summary"><h2>01. Shipping Adress</h2></summary>
+            <div class="flex">
+                <div class="div-checkout div-checkout__left">
+                    <form action="send.php" class="form-checkout">
+                        <h3>Check as a guest or register</h3>
+                        <p>Register with us for future convenience</p>
+                        <div class="div-radio">
+                            <p>
+                                <label class="radio radio__mb5">
+                                    <input name="checkout" type="radio" class="radio__radio">
+                                    <span class="radio__custom radio__custom_checkout"></span>
+                                    <span class="form-label">checkout as guest</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label class="radio">
+                                    <input name="checkout" type="radio" class="radio__radio" checked>
+                                    <span class="radio__custom radio__custom_checkout"></span>
+                                    <span class="form-label">register</span>
+                                </label>
+                            </p>
+                        </div>
+                        <h3>register and save time!</h3>
+                        <p>Register with us for future convenience</p>
+                        <br>
+                        <p><i class="fa fa-angle-double-right" aria-hidden="true"></i> Fast and easy checkout</p>
+                        <p><i class="fa fa-angle-double-right" aria-hidden="true"></i> Easy access to your order history and
+                            status</p>
+                        <input type="submit" value="Continue" class="button-w button-w__checkout">
+                    </form>
+                </div>
+                <div class="div-checkout">
+                    <form action="send.php">
+                        <h3>Already registed?</h3>
+                        <p>Please log in below</p>
+                        <div class="div-login">
+                            <p class="form-label form-label__login">EMAIL ADDRESS <span>*</span></p>
+                            <input type="email" class="input input__mb5" required>
+                            <h3 class="form-label form-label__login">PASSWORD <span>*</span></h3>
+                            <input type="password" class="input input__mb5" required>
+                            <p class="red-comment">* Required Fileds</p>
+                        </div>
+                        <input type="submit" value="Log in" class="button-w button-w__checkout"><a href="#">Forgot Password
+                        ?</a>
+                    </form>
+                </div>
+            </div>
+        </details>
+        <details class="checkout-details">
+            <summary class="checkout-summary"><h2>02. BILLING INFORMATION</h2></summary>
+            <div class="flex">
+                <div class="div-checkout div-checkout__left">
+                    <form action="send.php" class="form-checkout">
+                        <h3>Check as a guest or register</h3>
+                        <p>Register with us for future convenience</p>
+                        <div class="div-radio">
+                            <p>
+                                <label class="radio radio__mb5">
+                                    <input name="checkout" type="radio" class="radio__radio">
+                                    <span class="radio__custom radio__custom_checkout"></span>
+                                    <span class="form-label">checkout as guest</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label class="radio">
+                                    <input name="checkout" type="radio" class="radio__radio" checked>
+                                    <span class="radio__custom radio__custom_checkout"></span>
+                                    <span class="form-label">register</span>
+                                </label>
+                            </p>
+                        </div>
+                        <h3>register and save time!</h3>
+                        <p>Register with us for future convenience</p>
+                        <br>
+                        <p><i class="fa fa-angle-double-right" aria-hidden="true"></i> Fast and easy checkout</p>
+                        <p><i class="fa fa-angle-double-right" aria-hidden="true"></i> Easy access to your order history and
+                            status</p>
+                        <input type="submit" value="Continue" class="button-w button-w__checkout">
+                    </form>
+                </div>
+                <div class="div-checkout">
+                    <form action="send.php">
+                        <h3>Already registed?</h3>
+                        <p>Please log in below</p>
+                        <div class="div-login">
+                            <p class="form-label form-label__login">EMAIL ADDRESS <span>*</span></p>
+                            <input type="email" class="input input__mb5" required>
+                            <h3 class="form-label form-label__login">PASSWORD <span>*</span></h3>
+                            <input type="password" class="input input__mb5" required>
+                            <p class="red-comment">* Required Fileds</p>
+                        </div>
+                        <input type="submit" value="Log in" class="button-w button-w__checkout"><a href="#">Forgot Password
+                        ?</a>
+                    </form>
+                </div>
+            </div>
+        </details>
+        <details class="checkout-details">
+            <summary class="checkout-summary"><h2>03. SHIPPING INFORMATION</h2></summary>
+        </details>
+        <details class="checkout-details">
+            <summary class="checkout-summary">
+                <h2>04. SHIPPING METHOD</h2></summary>
+        </details>
+        <details class="checkout-details">
+            <summary class="checkout-summary">
+                <h2>05. PAYMENT METHOD</h2></summary>
+        </details>
+        <details class="checkout-details">
+            <summary class="checkout-summary"><h2>06. ORDER REVIEW</h2></summary>
+        </details>
+    </section>
+
+    <section class="subscribe">
+        <div class="subscribe-opacity">
+            <div class="container flex-between">
+                <div class="feedback">
+                    <figure>
+                        <div>
+                            <img src="img/feedback.png" alt="Bin Burhan foto">
+                            <p>“Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a.
+                                Aliquam
+                                condimentum mattis neque sed pretium”</p>
+                        </div>
+                        <p class="feedback-comment">
+                            Bin Burhan<br>
+                            <span>Dhaka, Bd</span>
+                        </p>
+                    </figure>
+                    <a href="#"></a><a href="#" class="active"></a><a href="#"></a>
+                </div>
+                <div class="subscribe-form">
+                    <h2>Subscribe</h2>
+                    <p>FOR OUR NEWLETTER AND PROMOTION</p>
+                    <form action="send.php" class="flex">
+                        <input type="email" required placeholder="Enter Your Email"><input type="submit" value="Subscribe">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+//= template/footer.html
+
+</body>
+</html>

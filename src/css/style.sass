@@ -1,0 +1,781 @@
+@import "vars"
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900')
+
+*
+  margin: 0
+  padding: 0
+
+html, body
+  height: 100%
+
+body
+  font-family: 'Lato', sans-serif
+  color: $color-main
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.content
+  flex: 1
+
+.active
+  color: $color-pink !important
+  font-weight: 700 !important
+  pointer-events: none
+  cursor: default
+
+button, label
+  cursor: pointer
+
+select:active, select:focus, select:hover
+  outline: none
+  cursor: pointer
+
+a
+  text-decoration: none
+
+.input
+  box-sizing: border-box
+  height: 45px
+  width: 100%
+  padding: 15px
+  border: 1px solid #eaeaea
+  background: transparent
+  color: #000
+  font-size: 13px
+  font-weight: 300
+  transition: border-color $h-speed
+  &:focus
+    border-color: $color-pink
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+  &__cart
+    height: 35px
+    margin: 0
+  &__postcode
+    -moz-appearance: textfield
+  &__mb5
+    margin-bottom: 5px
+  &__mb20
+    margin-bottom: 20px
+  &__mb25
+    margin-bottom: 25px
+
+
+input:focus, summary:focus, button:focus
+  outline: none
+
+.container
+  max-width: $container-width
+  padding: 0 $padding-l-r
+  margin: 0 auto
+  &__single
+    position: relative
+    margin-top: calc(100vw / 1.6 * 0.5 - 23.5px)
+
+summary::-webkit-details-marker
+  display: none
+
+.flex
+  display: flex
+  min-height: inherit
+
+.flex-between
+  display: flex
+  min-height: inherit
+  justify-content: space-between
+
+
+.jc-center
+  justify-content: center
+
+.relative
+  position: relative
+
+.button-w
+  display: block
+  border: 1px solid #eaeaea
+  color: #4a4a4a
+  background: #ffffff
+  font-size: 14px
+  font-weight: 700
+  text-align: center
+  line-height: 48px
+  text-transform: uppercase
+  text-decoration: none
+  transition: all 0.2s
+  &:hover
+    border-color: $color-pink
+    color: $color-pink
+  &__checkout
+    display: inline-block
+    margin-top: 30px
+    margin-right: 32px
+    padding: 0
+    width: 180px
+  &__cart
+    width: 223px
+    margin-bottom: 10px
+
+.form-label
+  color: $color-main !important
+  font-size: 12px
+  font-weight: 400
+  text-transform: uppercase
+  transition: color $h-speed
+  &__login
+    line-height: 42px !important
+  span
+    color: #ff0d0d
+    font-size: 17px
+    font-weight: 400
+
+/*Checkbox castomization BEGIN*/
+
+.checkbox
+  display: none
+  &:checked .label
+    color: $color-pink
+
+.checkbox-custom
+  position: relative
+  width: 11px
+  height: 11px
+  margin-right: 6px
+  border: 1px solid #ebebeb
+  background-color: #ffffff
+
+
+.checkbox-custom, .label
+  display: inline-flex
+  align-items: center
+
+
+.checkbox:checked + .checkbox-custom::before
+  content: ""
+  display: block
+  position: absolute
+  top: 2px
+  right: 2px
+  bottom: 2px
+  left: 2px
+  background-color: $color-pink
+
+
+/*Checkbox castomization BEGIN*/
+
+/*Radio-buttons castomization BEGIN*/
+
+.radio
+  display: flex
+  align-items: center
+  &__mb5
+    margin-bottom: 5px
+  &:hover .radio__label
+    color: $color-pink
+  &__radio
+    display: none
+    &:checked .radio__label
+      color: $color-pink
+  &__custom
+    display: inline-flex
+    align-items: center
+    position: relative
+    width: 10px
+    height: 10px
+    border: 2px solid #555555
+    border-radius: 10px
+    background-color: #ffffff
+    &_checkout
+      margin-right: 15px
+
+.radio__radio:checked + .radio__custom::before
+  content: ""
+  display: block
+  position: absolute
+  top: 2px
+  right: 2px
+  width: 6px
+  height: 6px
+  border-radius: 3px
+  background-color: #000000
+
+
+/*Radio-buttons castomization BEGIN*/
+
+
+/*Products sorting styles BEGIN*/
+
+.product-sort
+  height: 50px
+  background-color: #f3f3f3
+  p
+    height: 17px
+    padding: 8px
+    background-color: #ffffff
+    color: #6f6e6e
+    font-size: 14px
+    margin-left: 10px
+    outline: 1px solid #ebebeb
+
+
+.product-sort-flex
+  display: flex
+  align-items: center
+  position: relative
+
+
+.sort-div
+  position: relative
+  display: flex
+  cursor: pointer
+  outline: 1px solid #ebebeb
+  transition: outline-color $h-speed-fast
+  &:hover select
+    color: $color-pink
+  &:hover
+    outline-color: $color-pink
+  &:active
+    outline: none
+  &__product
+    width: 86px
+    height: 33px
+    background-color: #fff
+    &:after
+      position: absolute
+      right: 10px
+      content: '\25BE'
+      font-size: 16px
+      line-height: 33px
+      color: #6f6e6e
+      transition: color $h-speed
+    &:hover:after
+      color: $color-pink
+    &_show
+      width: 60px
+  &__single
+    position: relative
+    width: 144px
+    height: 35px
+    margin-left: 1px
+    &:after
+      position: absolute
+      right: 10px
+      top: 7px
+      content: '\2303'
+      transform: rotate(180deg)
+      font-size: 16px
+      color: #bcbcbc
+      transition: all $h-speed
+    &:hover:after
+      color: $color-pink
+  &__select
+    position: absolute
+    z-index: 1
+    width: 100%
+    height: 100%
+    padding: 8px 1.7em 8px 8px
+    border: 0
+    border-radius: 0
+    color: #6f6e6e
+    font-size: 14px
+    -webkit-appearance: none
+    -moz-appearance: none
+    background: transparent
+    transition: color $h-speed-fast
+    &_single
+      padding: 0 12px
+      line-height: 35px
+
+/*Products sorting styles END*/
+
+// Input number styles BEGIN
+
+.input-number::-webkit-outer-spin-button, input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+.input-number
+  width: 44px
+  height: 30px
+  padding: 5px
+  border: 1px solid #eaeaea
+  text-align: center
+  color: #656565
+  font-size: 13px
+  font-weight: 400
+  transition: border $h-speed
+  -moz-appearance: textfield
+  &__single
+    width: calc(100% - 2*17px)
+    height: 35px
+    padding: 0 17px
+    text-align: left
+    margin-top: -1px
+  &__cart
+    height: 20px
+  &:focus
+    border: 1px solid $color-pink
+
+// Input number styles END
+
+/*Header styles*/
+@import "header"
+
+/*Slider styles*/
+
+.slider
+  height: 614px
+  background-color: #e8e8e8
+
+
+.slider-content
+  background: url("../img/slider(1).jpg") 0 -51px
+  height: 100%
+  background-position: center
+
+
+.slider-text
+  margin-top: 224px
+  float: left
+  border-left: 12px solid $color-pink
+  padding-left: 12px
+  h2
+    font-size: 60px
+    font-weight: 900
+    line-height: 45px
+    padding-bottom: 12px
+  h4
+    font-size: 40px
+    font-weight: 900
+    line-height: 33px
+  span
+    color: $color-pink
+
+
+/*Category styles*/
+
+.category
+  display: flex
+  margin-top: 78px
+  a
+    max-height: 50px
+    text-decoration: none
+    background-color: #ffffff
+    padding: 16px 20px
+    &:hover h2
+      color: $color-pink-h
+  h4
+    font-size: 18px
+    font-weight: 900
+    line-height: 18px
+    letter-spacing: 0.45px
+    color: $color-main
+    text-transform: uppercase
+  h2
+    font-size: 30px
+    font-weight: 900
+    letter-spacing: 0.75px
+    color: $color-pink
+    text-transform: uppercase
+    transition: color $h-speed-fast
+
+.category-left
+  width: 50%
+  margin-right: 10px
+
+.category-right
+  width: 50%
+  margin-left: 10px
+
+.category .big
+  display: flex
+  width: 100%
+  height: 516px
+  margin: 20px 0
+  padding-top: 26px
+
+
+.category .small
+  display: flex
+  width: 100%
+  height: 235px
+  margin: 20px 0
+  padding-top: 26px
+
+
+.category-left .big
+  background-size: cover
+  background: url("../img/men.jpg") no-repeat center
+
+.category-left .small
+  background-size: cover
+  background: url("../img/accessories.jpg") no-repeat center
+
+.category-right .big
+  background-size: cover
+  background: url("../img/kid.jpg") no-repeat center
+
+.category-right .small
+  background-size: cover
+  background: url("../img/women.jpg") no-repeat center
+
+/*Product styles*/
+
+.product-block
+  margin-top: 63px
+  h2
+    font-size: 30px
+    font-weight: bold
+    line-height: 1.8
+    letter-spacing: 0.75px
+    text-align: center
+  p
+    max-width: 400px
+    margin: auto auto 60px
+    font-size: 14px
+    line-height: 1
+    letter-spacing: 0.35px
+    text-align: center
+    color: #9f9f9f
+
+//Products box styles BEGIN
+
+.product-box
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  list-style: none
+  margin-bottom: 39px
+  &__single
+    margin-bottom: 33px
+  h3
+    max-width: 231px
+    font-size: 13px
+    margin: 11px 0
+    color: $color-main
+    padding: 0 15px
+    padding-bottom: 19px
+  h4
+    position: absolute
+    bottom: 21px
+    font-size: 16px
+    font-weight: bold
+    color: $color-pink
+    padding: 0 15px
+  img
+    width: 100%
+    max-width: 261px
+    max-height: 280px
+    min-height: 100%
+    transition: filter $h-speed
+  a
+    text-decoration: none
+  a:first-of-type
+    display: block
+    width: 261px
+  &__h3
+    font-size: 14px !important
+    color: #6f6e6e !important
+    font-weight: normal !important
+
+.product-box-a
+  position: relative
+  padding-bottom: 21px
+  margin-bottom: 39px
+  transition: box-shadow $h-speed
+  img:first-of-type
+    position: relative
+  &:hover
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.16)
+  &:hover .product-img
+    filter: brightness(48%)
+  &:hover .product-to-cart
+    display: flex
+
+
+.product-to-cart
+  display: none
+  position: absolute
+  left: 25%
+  top: 35%
+  justify-content: center
+  align-items: center
+  padding: 7px 12px
+  border: solid 1px #ffffff
+  color: #ffffff
+  font-size: 13px
+  transition: background-color $h-speed-fast
+  &:hover
+    background-color: $color-pink
+  img
+    height: 22px
+    width: 27px
+    margin-right: 8px
+
+
+//Products box styles END
+
+
+.product-button
+  display: block
+  width: fit-content
+  width: -moz-fit-content
+  line-height: 48px
+  margin: auto
+  margin-bottom: 100px
+  padding: 0 24px
+  height: 48px
+  background-color: $color-pink
+  font-size: 16px
+  font-weight: bold
+  letter-spacing: 0.4px
+  color: #ffffff
+  text-align: center
+  text-decoration: none
+  transition: background-color $h-speed
+  &:hover
+    background-color: $color-pink-h
+  i
+    margin-left: 9px
+
+
+
+/*Feature styles*/
+
+.feature
+  display: flex
+  padding: 0
+  margin-bottom: 97px
+  background-color: #222224
+  max-height: 529px
+  a
+    height: fit-content
+    text-decoration: none
+    margin-top: 146px
+    margin-left: 39px
+    &:hover span
+      color: $color-pink-h
+  h2
+    font-size: 54px
+    font-weight: bold
+    letter-spacing: 1.3px
+    color: #ffffff
+    text-transform: uppercase
+    span
+      color: $color-pink
+      transition: color $h-speed-fast
+  ul
+    display: flex
+    flex-flow: column
+    justify-content: space-around
+    color: #fbfbfb
+    padding: 15px 43px 15px 36px
+    list-style-type: none
+  li
+    div
+      display: flex
+      align-items: center
+    img
+      float: left
+      max-height: 50px
+      width: 45px
+
+.feature-left
+  display: flex
+  width: 60.4%
+  height: 529px
+  padding: 0 39px 0 39px
+  background-image: url("../img/feature.jpg")
+  background-repeat: no-repeat
+  background-position: center
+  p
+    font-size: 32px
+    font-weight: bold
+    letter-spacing: 0.8px
+    color: #ffffff
+    text-transform: uppercase
+
+
+.feature-right
+  p
+    max-width: 230px
+    margin-left: 78px
+    font-size: 14px
+    font-weight: 300
+    line-height: 1.714
+    color: #fbfbfb
+  span
+    display: flex
+    max-width: 230px
+    padding: 5px 33px 0 33px
+    margin-bottom: 15px
+    font-size: 20px
+    font-weight: bold
+    letter-spacing: 0.5px
+    color: #fbfbfb
+
+.feature-box
+  min-height: 289px
+  background-color: #222224
+  .container
+    display: flex
+    align-items: center
+    min-height: inherit
+    padding: 26px
+  ul
+    display: flex
+    justify-content: space-between
+    height: fit-content
+    list-style-type: none
+  li
+    flex: 1
+    text-align: center
+    min-height: inherit
+  img
+    margin-bottom: 24px
+    width: auto
+    height: 40px
+  figure
+    padding: 0 35px
+  span
+    margin: auto
+    display: block
+    padding: 0
+    margin-bottom: 10px
+    max-width: none
+  p
+    margin: 0 auto
+    max-width: none
+
+/*Subscribe styles*/
+
+.subscribe
+  position: relative
+  min-height: 438px
+  background: url("../img/subscribe-bg.jpg") no-repeat
+  background-position: center
+  background-size: cover
+  &:after
+    position: absolute
+    top: 0
+    left: 50%
+    content: ''
+    width: 1px
+    height: 100%
+    background-color: #fff
+
+.subscribe-opacity
+  min-height: inherit
+  background-color: rgba(255, 255, 255, 0.1)
+
+
+.feedback
+  max-width: 49%
+  div
+    display: flex
+    align-items: center
+    margin: 110px 0 9px 0
+    font-size: 16px
+    font-style: italic
+    line-height: 1.625
+    letter-spacing: 0.4px
+    color: #222224
+  p
+    max-width: 394px
+    max-height: 150px
+    margin-top: 7px
+    line-height: 1.625
+    letter-spacing: 0.4px
+  img
+    width: 83px
+    height: 83px
+    float: left
+    margin-right: 30px
+  a
+    display: inline-flex
+    margin-top: 20px
+    margin-right: 13px
+    padding: 10px 0
+    width: 38px
+    border-bottom: 4px #d6d6d6 solid
+    transition: border-bottom-color $h-speed
+    &:hover
+      border-bottom-color: $color-pink
+    &:first-of-type
+      margin-left: 115px
+  .active
+    border-bottom-color: $color-pink
+
+
+.feedback-comment
+  margin-top: 13px !important
+  margin-left: 113px
+  font-size: 16px
+  font-weight: bold
+  letter-spacing: 0.4px !important
+  line-height: 0.93 !important
+  color: $color-pink
+  span
+    font-size: 12px
+    font-weight: 300
+    line-height: 1.167
+    letter-spacing: 0.4px
+    color: #222224
+
+
+.subscribe-form
+  max-width: 49%
+  width: 35%
+  margin-right: 5.5%
+  margin-top: 12.7%
+  h2
+    margin-bottom: 5px
+    font-size: 24px
+    letter-spacing: 0.4px
+    text-align: center
+    color: #222224
+    text-transform: uppercase
+  p
+    margin-bottom: 32px
+    max-width: 390px
+    font-size: 14px
+    letter-spacing: 0.35px
+    text-align: center
+    color: #222224
+  input[type="email"]
+    width: 72%
+    height: 46px
+    padding: 0 30px
+    border-bottom-left-radius: 23px
+    border-top-left-radius: 23px
+    background-color: #e1e1e1
+    font-size: 14px
+    letter-spacing: 0
+    color: rgba(34, 34, 36, 0.67)
+    border: 0
+  input[type="submit"]
+    padding: 0 19px
+    height: 46px
+    border-bottom-right-radius: 23px
+    border-top-right-radius: 23px
+    background-color: $color-pink
+    font-size: 14px
+    letter-spacing: 0
+    text-align: center
+    color: #ffffff
+    border: 0
+    cursor: pointer
+    transition: background-color $h-speed
+    &:hover
+      background-color: $color-pink-h
+
+@import "footer"
+
+@import "product"
+
+@import "cart"
+
+@import "checkout"
+
+@import "single"
