@@ -1,0 +1,364 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 10,
+      "img": [
+        "img/products/man-1.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Lace"
+    },
+    {
+      "id": 2,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 20,
+      "img": [
+        "img/products/man-2.jpg",
+        "img/products/man-1.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Lace"
+    },
+    {
+      "id": 3,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 30,
+      "img": [
+        "img/products/product-3.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.0,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 4,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 40,
+      "img": [
+        "img/products/man-4.jpg",
+        "img/products/man-1.jpg",
+        "img/products/man-2.jpg"
+      ],
+      "rating": 4.7,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 5,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 50,
+      "img": [
+        "img/products/product-8.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 5.0,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 6,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 60,
+      "img": [
+        "img/products/man-6.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 3.0,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 7,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 70,
+      "img": [
+        "img/products/product-6.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.2,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 8,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 80,
+      "img": [
+        "img/products/man-8.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.5,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 9,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 90,
+      "img": [
+        "img/products/man-9.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.1,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 10,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 100,
+      "img": [
+        "img/products/man-1.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 11,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 110,
+      "img": [
+        "img/products/man-1.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian"
+    },
+    {
+      "id": 12,
+      "gender": "man",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 120,
+      "img": [
+        "img/products/man-1.jpg",
+        "img/products/man-2.jpg",
+        "img/products/man-4.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian"
+    }
+  ]
+}
