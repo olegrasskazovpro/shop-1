@@ -291,7 +291,7 @@ nav
 .mega
   display: none
   position: absolute
-  z-index: 1
+  z-index: 2
   top: 43px
   left: -200px
   padding: 12px 21px 3px 21px
@@ -345,6 +345,10 @@ nav
     margin-bottom: 0
   &:last-of-type
     margin-bottom: 10px
+  &__active
+    color: $color-pink !important
+    pointer-events: none
+    cursor: default
   a
     color: #646464
     font-size: 14px
