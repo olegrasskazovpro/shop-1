@@ -112,7 +112,6 @@
     line-height: 37px !important
     text-transform: uppercase
 
-
 .trending-filter
   width: 200px
   color: #dfdfdf
@@ -126,7 +125,6 @@
     line-height: 26px
     text-decoration: none
     transition: color $h-speed-fast
-
 
 .size-filter
   width: 285px
@@ -146,66 +144,38 @@
   display: flex
   flex-wrap: wrap
 
-
 .price-filter
   width: 262px
 
+.price-range
+  &__result
+    justify-content: space-between
+    font-size: 14px
+    font-weight: 400
 
-input[type=range]
-  -webkit-appearance: none
-  width: 100%
-  cursor: pointer
-  &:focus
-    outline-color: #ffffff
-    color: #ffffff
-  &::-webkit-slider-runnable-track
-    width: 100%
-    height: 6px
-    margin: 10px 0
-    border-radius: 3px
-    background-color: #f0f0f0
-    transition: background-color $h-speed
-    &:hover
-      background-color: #d1d1d1
-  &::-webkit-slider-thumb
-    -webkit-appearance: none
-    background-color: $color-pink
-    width: 14px
-    height: 14px
-    border-radius: 7px
-    cursor: pointer
-    margin-top: -4px
-    transition: background-color $h-speed
-    &:hover
-      background-color: $color-pink-h
-    &:active
-      background-color: $color-pink-h
-  &::-moz-range-track
-    width: 100%
-    height: 6px
-    border-radius: 3px
-    background-color: #f0f0f0
-    transition: background-color $h-speed
-    &:hover
-      background-color: #d1d1d1
-  &::-moz-range-thumb
-    background-color: $color-pink
-    width: 14px
-    height: 14px
-    border: 0
-    border-radius: 7px
-    cursor: pointer
-    margin-top: -4px
+.ui-slider
+  &-horizontal
+    background-color: #f0f0f0 !important
+    border: none !important
+    height: 6px !important
+    margin: 12px 0
+  &-handle
+    height: 14px !important
+    width: 14px !important
+    top: -4px !important
+    z-index: 1 !important
+    background: $color-pink !important
+    border: 0 !important
+    border-radius: 7px !important
+    cursor: pointer !important
+    outline: none !important
+    //transition: background $h-speed
     &:active
       background-color: $color-pink-h
     &:hover
       background-color: $color-pink-h
-
-
-.price-range-result
-  justify-content: space-between
-  font-size: 14px
-  font-weight: 400
+  &-range
+    background: $color-pink !important
 
 
 /*Products results styles*/
