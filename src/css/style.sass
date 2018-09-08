@@ -24,6 +24,9 @@ body
   pointer-events: none
   cursor: default
 
+.template
+  display: none
+
 button, label
   cursor: pointer
 
@@ -454,6 +457,7 @@ summary::-webkit-details-marker
     font-size: 13px
     margin: 11px 0
     color: $color-main
+    text-transform: uppercase
     padding: 0 15px
     padding-bottom: 19px
   h4
@@ -492,6 +496,8 @@ summary::-webkit-details-marker
     filter: brightness(48%)
   &:hover .product-to-cart
     display: flex
+  &__template
+    display: none
 
 
 .product-to-cart
