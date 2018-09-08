@@ -2,11 +2,12 @@
   "products": [
     {
       "id": 1,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -16,27 +17,25 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
       ],
       "price": 10,
       "img": [
-        "img/products/man-1.jpg",
-        "img/products/man-2.jpg",
-        "img/products/man-4.jpg"
+        "img/products/man-1.jpg"
       ],
       "rating": 4.3,
       "trending": "Lace"
     },
     {
       "id": 2,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -45,8 +44,6 @@
       "size": [
         "XXL",
         "XL",
-        "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -62,11 +59,12 @@
     },
     {
       "id": 3,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -76,10 +74,7 @@
         "XXL",
         "XL",
         "L",
-        "M",
-        "S",
-        "XS",
-        "XXS"
+        "S"
       ],
       "price": 30,
       "img": [
@@ -87,26 +82,23 @@
         "img/products/man-2.jpg",
         "img/products/man-4.jpg"
       ],
-      "rating": 4.0,
+      "rating": 4,
       "trending": "Bohemian"
     },
     {
       "id": 4,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
         "green"
       ],
       "size": [
-        "XXL",
-        "XL",
-        "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -122,23 +114,18 @@
     },
     {
       "id": 5,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
         "green"
       ],
       "size": [
-        "XXL",
-        "XL",
-        "L",
-        "M",
-        "S",
-        "XS",
         "XXS"
       ],
       "price": 50,
@@ -147,16 +134,17 @@
         "img/products/man-2.jpg",
         "img/products/man-4.jpg"
       ],
-      "rating": 5.0,
+      "rating": 5,
       "trending": "Bohemian"
     },
     {
       "id": 6,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -165,11 +153,7 @@
       "size": [
         "XXL",
         "XL",
-        "L",
-        "M",
-        "S",
-        "XS",
-        "XXS"
+        "L"
       ],
       "price": 60,
       "img": [
@@ -177,16 +161,17 @@
         "img/products/man-2.jpg",
         "img/products/man-4.jpg"
       ],
-      "rating": 3.0,
+      "rating": 3,
       "trending": "Bohemian"
     },
     {
       "id": 7,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -196,7 +181,6 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -212,11 +196,12 @@
     },
     {
       "id": 8,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -226,7 +211,6 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -242,11 +226,12 @@
     },
     {
       "id": 9,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -256,7 +241,6 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -272,11 +256,12 @@
     },
     {
       "id": 10,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -286,7 +271,6 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -302,11 +286,12 @@
     },
     {
       "id": 11,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -316,7 +301,6 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
@@ -332,11 +316,12 @@
     },
     {
       "id": 12,
-      "gender": "man",
+      "catItem": "Man",
       "category": "Jackets & Coats",
       "brand": "Marko Polo",
       "designer": "Designer 1",
       "name": "Mango people T-short",
+      "href": "product.html",
       "color": [
         "red",
         "yellow",
@@ -346,7 +331,6 @@
         "XXL",
         "XL",
         "L",
-        "M",
         "S",
         "XS",
         "XXS"
