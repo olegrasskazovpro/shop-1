@@ -54,3 +54,5 @@ class SetActiveLinks {
 //= cart.js
 
 //= jCarousel.js
+
+//= js.cookie.js
