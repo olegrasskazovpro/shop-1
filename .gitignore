@@ -5,7 +5,3 @@ dist/**/*.*
 dist/*.*
 /dist/*.*
 dist/*.html
-dist/css/style.css
-dist/img/single-woman-3.jpg
-dist/js/main.js
-dist/product.html
