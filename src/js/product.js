@@ -12,29 +12,72 @@ class FiltersHandle {
       designer: null, // 'all' or string
       size: [0], // [0] or [a, (...)]
       price: [], // [a, b]
-      showBy: 3,
+      showBy: null,
     };
     this.callback = callback;
   }
 
-  init() {
+  init(min, max, step) {
+    this.setCookiesFilters();
+    this.initPriceSlider(min, max, step);
     this.filters.catItem = this.getCatItem();
     this.filters.category = this.getCategory();
     this.filters.brand = this.getBrand();
     this.filters.designer = this.getDesigner();
-    this.getSize();
-    this.filters.price = this.getPrice();
-    this.getShowBy();
+    this.setSizeCheckboxHandler();
+    this.filters.price = this.getPriceRange();
+    this.setShowByHandler();
     this.postFilters(this.filters);
   }
 
   /**
-   * Setting up price-range slider
+   * Setting in DOM all filters from cookies
+   */
+  setCookiesFilters() {
+    this.getCookiesFilters();
+    this.setSizeChecked();
+    this.setShowBySelected(this.filters.showBy);
+  }
+
+  /**
+   * Save in this.filters all filters from cookies
+   */
+  getCookiesFilters() {
+    const cookiesFilters = Cookies.get();
+    if (cookiesFilters.price) {
+      cookiesFilters.price = cookiesFilters.price.split('_');
+    }
+    if (cookiesFilters.size) {
+      cookiesFilters.size = cookiesFilters.size.split('_');
+    }
+
+    for (const propC in cookiesFilters) {
+      for (const propF in this.filters) {
+        if (propC === propF) {
+          this.filters[propF] = cookiesFilters[propC];
+        }
+      }
+    }
+  }
+
+  /**
+   * Setting up price-range slider.
+   * If price cookie is - set minVal and maxVal from cookies
    */
   initPriceSlider(min, max, step) {
+    let minVal, maxVal;
+
+    if (this.filters.price.length) {
+      minVal = this.filters.price[0];
+      maxVal = this.filters.price[1];
+    } else {
+      minVal = max * 0.05;
+      maxVal = max * 0.4;
+    }
+
     $('.price-range__slider').slider({
       range: true,
-      values: [(max * 0.05), (max * 0.4)],
+      values: [minVal, maxVal],
       min: min,
       max: max,
       step: step,
@@ -43,7 +86,9 @@ class FiltersHandle {
       },
       change: () => {
         this.showPriceRangeValues();
-        this.filters.price = $('.price-range__slider').slider('values');
+        this.filters.price = this.getPriceRange();
+        this.setCookies('price', this.filters.price.join('_'));
+        $('#oops').addClass('template');
         this.postFilters(this.filters);
       }
     });
@@ -54,8 +99,8 @@ class FiltersHandle {
    * Show/Update min and max price range values
    */
   showPriceRangeValues() {
-    $('#price-min').text($('.price-range__slider').slider('values')[0]);
-    $('#price-max').text($('.price-range__slider').slider('values')[1]);
+    $('#price-min').text(this.getPriceRange()[0]);
+    $('#price-max').text(this.getPriceRange()[1]);
   }
 
   getCatItem() {
@@ -87,11 +132,39 @@ class FiltersHandle {
     }
   }
 
-  getSize() {
+  /**
+   * If (no size cookie) set all sizes, else set sizes from cookies
+   */
+  setSizeChecked() {
+    if (Cookies.get('size')) {
+      let cookiesSize = Cookies.get('size').split('_'); // turn size cookie to array
+      // find all checkboxes which data-name is one of cookiesSize and set it checked
+      for (let i = 0; i < cookiesSize.length; i++) {
+        for (let j = 0; j < $('.size-checkbox').length; j++) {
+          if (cookiesSize[i] === $('.size-checkbox')[j].dataset.name) {
+            $('.size-checkbox')[j].setAttribute("checked", "");
+            $('.size-checkbox')[j].classList.add("checked");
+          }
+        }
+      }
+    } else {
+      for (let j = 0; j < $('.size-checkbox').length; j++) {
+        $('.size-checkbox')[j].setAttribute("checked", "");
+        $('.size-checkbox')[j].classList.add("checked");
+      }
+    }
+  }
+
+  /**
+   * Set handlers of size checkboxes state changing
+   * Updates size cookie, this.filters and sends POST to server
+   */
+  setSizeCheckboxHandler() {
     let that = this;
     // set update sizes Arr for every size checkbox click
     $('.size-checkbox').on('click', function () {
       this.classList.toggle('checked'); // if Checked set class 'checked' and back
+      $('#oops').addClass('template');
 
       if ($('.checked').length) {
         let sizes = []; // clear size Arr
@@ -99,6 +172,7 @@ class FiltersHandle {
           sizes.push($('.checked')[i].dataset.name);
         }
         that.filters.size = sizes;
+        that.setCookies('size', sizes.join('_'));
       } else {
         that.filters.size = [0];
       }
@@ -106,19 +180,54 @@ class FiltersHandle {
     });
   }
 
-  getPrice() {
+  /**
+   * Returns price slider range
+   * @returns [] {jQuery}
+   */
+  getPriceRange() {
     return $('.price-range__slider').slider('values');
   }
 
-  getShowBy() {
-    this.filters.showBy = +$('#showBy option:selected').text();
-    // set update showBy for every selection changed
+  /**
+   * Sets "selected" attribute for showBy option
+   * @param Int value value of option's value property
+   */
+  setShowBySelected(value) {
+    if (value === null) {
+      this.filters.showBy = 3;
+      $(`#showBy option[value="3"]`)[0].setAttribute("selected", "");
+    } else {
+      $(`#showBy option:selected`).removeAttr("selected");
+      $(`#showBy option[value=${value}]`)[0].setAttribute("selected", "");
+    }
+  }
+
+  /**
+   * ShowBy selector change handler. If changed:
+   * remove "selected" attr,
+   * update this.filters.showBy,
+   * update showBy in Cookies
+   * post updated filters to server
+   */
+  setShowByHandler() {
     $('#showBy').on('change', () => {
+      $(`#showBy option[selected]`).removeAttr("selected");
       this.filters.showBy = +$('#showBy option:selected').text();
+      $(`#showBy option[value=${this.filters.showBy}]`)[0].setAttribute("selected", "");
+
+      this.setCookies('showBy', this.filters.showBy);
       this.postFilters(this.filters);
     })
   }
 
+  setCookies(name, val) {
+    Cookies.set(name, val, {expires: 7});
+  }
+
+  /**
+   * Send filters to server
+   * @param {} data - filters
+   */
   postFilters(data) {
     $.ajax({
       url: 'http://localhost:3002/filters',
@@ -143,7 +252,7 @@ class ServerFilterProducts {
   constructor(callback) {
     this.filters = {};
     this.catalog = {};
-    this.showInFrontend = callback;
+    this.render = callback;
   }
 
   init() {
@@ -290,6 +399,7 @@ class ServerFilterProducts {
           console.log('Filtered catalog DB cleaned');
         } else {
           console.log('Filtered catalog posted to DB');
+          this.render.init()
         }
         //this.callback.getFilters(); // сюда передать коллбэк для отображения в фронтэнде
       },
@@ -300,24 +410,189 @@ class ServerFilterProducts {
   }
 }
 
-class ShowFiltered {
+class Render {
   constructor() {
-
+    this.el = null;
+    this.products = [];
   }
 
   init() {
+    this.getFilteredCatalog();
+  }
 
+  getFilteredCatalog() {
+    $.ajax({
+      url: 'http://localhost:3002/filteredProducts',
+      method: 'GET',
+      dataType: 'json',
+      success: data => {
+        console.log('320 - Frontend got filtered catalog from DB');
+        this.render(data);
+      },
+      error: () => {
+        console.log('324 - Method getFilteredCatalog() of getting filtered catalog FAILED');
+      }
+    })
+  }
+
+  render(data) {
+    this.setPagination(data);
+    this.cleanProducts();
+    this.renderProducts(data);// fill template
+    // append el
+  }
+
+  /**
+   * Find and return product <figure> template
+   * @returns {*} HTML of product <figure>
+   */
+  cleanProducts() {
+    document.querySelector('.product-box').innerHTML = '';
+  }
+
+  renderProducts(data) {
+    let page = 'page_' + $('#pagination .active').text(); // find active page
+
+    if (data[page]) {
+      for (let oneProd, i = 0; i < data[page].length; i++) {
+        oneProd = $('#prod_template')[0].cloneNode(true);
+        oneProd.querySelector('.product_href').href = data[page][i].href;
+        oneProd.querySelector('.product-img').src = data[page][i].img[0];
+        oneProd.querySelector('.product-img').alt = data[page][i].name;
+        oneProd.getElementsByTagName('h3')[0].textContent = data[page][i].name;
+        oneProd.getElementsByTagName('h4')[0].textContent = '$' + data[page][i].price + '.00';
+        oneProd.classList.remove('template');
+        // this.products.push(this.el);
+        document.querySelector('.product-box').appendChild(oneProd);
+      }
+    } else {
+      $('#oops').removeClass('template');
+    }
+
+      
+    //TODO если товары не найдены - выводить сообщение об этом
+  }
+
+  /**
+   * Check if page URL contains some string
+   * @param string exp - regExp condition
+   * @returns {boolean} true if URL contains regExp
+   */
+  checkUrl(exp) {
+    let checkUrl = new RegExp(exp);
+    return checkUrl.test(document.location.href)
+  }
+
+  /**
+   * Parse string and return RegExp sutisfied result or null
+   * @param string for parsing
+   * @param string exp regular expression for search
+   * @returns {*} returns founded part of string or null
+   */
+  parseUrl(string, exp) {
+    let parse = string.match(exp);
+    return parse[0]
+  }
+
+  /**
+   * Set pagination div - fill it with <a>Num</a>
+   * @param {} data filtered catalog
+   */
+  setPagination(data) {
+    $('#pagination').html(''); // clear html of pagination
+
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      let href = '?' + Object.keys(data)[i];
+      let a = `<a href="${href}">${i + 1}</a>`;
+
+      if (i === 0) { //add first page number
+        $('#pagination').append(a);
+        $('#pagination a').addClass('active'); //set the first active
+
+      } else { //add another page numbers
+        $('#pagination').append(a);
+      }
+    }
+
+    this.urlPagination(data);
+    this.paginationNumHandler(data);
+    // this.paginationArrowsHandler(data);
+  }
+  /**
+   * Check if URL has page_* and set active page + add href to pagination slider arrows
+   * @param {} data filtered catalog
+   */
+  urlPagination(data) {
+    // get page_N from URL
+    let exp = /page_\d+/i;
+
+    if (this.checkUrl(exp)) { // check if URL has page_*
+      let pageInURL = this.parseUrl(document.location.href, exp);
+      let pageNoInURL = +this.parseUrl(pageInURL, /\d+/i); // parse number of page_ from URL
+      if (pageNoInURL > 0 && pageNoInURL <= Object.keys(data).length) {
+        this.setActiveInPagination(pageNoInURL);
+        this.setPaginationArrowsHref(pageNoInURL, data);
+      } else {
+        this.setActiveInPagination(1);
+        this.setPaginationArrowsHref(1, data);
+      }
+    }
+  }
+
+  /**
+   * Set .active class for n-th page in pagination
+   * @param Int n number of page from URL
+   */
+  setActiveInPagination(n) {
+    $('#pagination .active').removeClass('active'); //remove current active class
+    $(`#pagination a:nth-child(${n})`).addClass('active'); //add new active class
+  }
+
+  /**
+   * Set href to <a> in pagination slider
+   * @param Int n number of page from URL
+   * @param {} data filtered catalog
+   */
+  setPaginationArrowsHref(n, data) {
+    let prev = '';
+    let next = '';
+    let urlHtml = this.parseUrl(document.location.href, /\/[^\/]+?\.html/i); // get /*.html from url
+
+    // set left buttton href
+    if (n > 1) {
+      prev = `${urlHtml}?page_${n - 1}`;
+      $('.pages .left').attr('href', prev);
+    } else {
+      $('.pages .left').addClass('active')
+    }
+
+    // set right buttton href
+    if (n < Object.keys(data).length) {
+      next = `${urlHtml}?page_${n + 1}`;
+      $('.pages .right').attr('href', next);
+    } else {
+      $('.pages .right').addClass('active')
+    }
+  }
+
+  /**
+   * Set click handler at pagination numbers
+   */
+  paginationNumHandler() {
+    $('#pagination').on('click', 'a', function () {
+      $('#pagination .active').removeClass('active');
+      this.classList.add('active');
+    });
   }
 }
 
 (function ($) {
   $(function () {
-    let showFiltered = new ShowFiltered();
-    let filterProducts = new ServerFilterProducts(showFiltered);
+    let render = new Render();
+    let filterProducts = new ServerFilterProducts(render);
     let filtersHandle = new FiltersHandle(filterProducts);
 
-    filtersHandle.initPriceSlider(0, 1000, 1);
-    filtersHandle.init();
+    filtersHandle.init(0, 1000, 1);
 
   })
 })(jQuery);
