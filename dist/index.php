@@ -1,4 +1,4 @@
-<?php
+<?php //php added
 $h2 = 'THE BRAND';
 $h4 = 'OF LUXERIOUS <span>FASHION</span>';
 $title = 'B-shop';
@@ -7,7 +7,7 @@ $title = 'B-shop';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $title?></title>
+    <title><?php echo $title?></title> //php added
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -344,8 +344,8 @@ $title = 'B-shop';
     <section class="slider">
         <div class="container slider-content">
             <div class="slider-text">
-                <h2><?php echo $h2?></h2>
-                <h4><?php echo $h4?></h4>
+                <h2><?php echo $h2?></h2> //php added
+                <h4><?php echo $h4?></h4> //php added
             </div>
         </div>
     </section>
