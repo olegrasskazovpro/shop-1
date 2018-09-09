@@ -19,6 +19,7 @@ const log = require('fancy-log');
 let path = {
   dist: { //Тут мы укажем куда складывать готовые после сборки файлы
     html: 'dist/',
+    php: 'dist/',
     js: 'dist/js/',
     css: 'dist/css/',
     img: 'dist/img/',
@@ -27,6 +28,7 @@ let path = {
   },
   src: { //Пути откуда брать исходники
     html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
+    php: 'src/*.php',
     js: 'src/js/main.js', //В стилях и скриптах нам понадобятся только main файлы
     css: 'src/css/**/style.sass',
     img: 'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
@@ -38,6 +40,7 @@ let path = {
   },
   watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
     html: 'src/**/*.html',
+    php: 'src/**/*.php',
     js: 'src/js/**/*.js',
     css: 'src/css/**/*.sass',
     img: 'src/img/**/*.*',
@@ -64,6 +67,14 @@ gulp.task('html:build', function () {
     .pipe(rigger()) //Прогоним через rigger
     .pipe(gulp.dest(path.dist.html)) //Выплюнем их в папку build
     .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+});
+
+// Build PHP
+gulp.task('php:build', function () {
+    gulp.src(path.src.php) //Выберем файлы по нужному пути
+        .pipe(rigger()) //Прогоним через rigger
+        .pipe(gulp.dest(path.dist.php)) //Выплюнем их в папку build
+        .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
 
 // Build JS
@@ -148,6 +159,7 @@ gulp.task('build', [
   'db:build',
   // 'db:deploy',
   'html:build',
+  'php:build',
   'js:build',
   'css:build',
   'fonts:build',
@@ -157,6 +169,7 @@ gulp.task('build', [
 // Auto-build changed files
 gulp.task('watch', function () {
   gulp.watch(path.watch.html, ['html:build']);
+  gulp.watch(path.watch.php, ['php:build']);
   gulp.watch(path.watch.css, ['css:build']);
   gulp.watch(path.watch.js, ['js:build']);
   gulp.watch(path.watch.img, ['img:build']);
