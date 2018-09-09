@@ -1,8 +1,14 @@
+<?php
+$h2 = 'THE BRAND';
+$h4 = 'OF LUXERIOUS <span>FASHION</span>';
+$title = 'B-shop';
+$year = date('Y');
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>B-shop</title>
+    <title><?php echo $title?></title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
@@ -337,8 +343,8 @@
     <section class="slider">
         <div class="container slider-content">
             <div class="slider-text">
-                <h2>THE BRAND</h2>
-                <h4>OF LUXERIOUS <span>FASHION</span></h4>
+                <h2><?php echo $h2?></h2>
+                <h4><?php echo $h4?></h4>
             </div>
         </div>
     </section>
@@ -561,7 +567,7 @@
 
     <div class="footer-bottom">
         <div class="container footer-menu-bottom">
-            <div>&copy; 2017 Brand All Rights Reserved.</div>
+            <div>&copy; <?php echo $year?> Brand All Rights Reserved.</div>
             <div>
                 <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
