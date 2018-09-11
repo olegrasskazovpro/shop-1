@@ -31,11 +31,10 @@ class SetActiveLinks {
   }
 }
 
-(function ($) {
-  $(function () {
-    let pageInit = new SetActiveLinks();
-    pageInit.setActiveClass();
+class Carousel {
+  constructor () {}
 
+  init() {
     $('.jcarousel').jcarousel({
       wrap: 'circular'
     });
@@ -46,6 +45,32 @@ class SetActiveLinks {
     $('.jcarousel-next').click(function() {
       $('.jcarousel').jcarousel('scroll', '+=1');
     });
+  }
+}
+
+(function ($) {
+  $(function () {
+    let pageInit = new SetActiveLinks();
+    pageInit.setActiveClass();
+
+    let carousel = new Carousel();
+    carousel.init();
+
+    let ifProduct = new RegExp('product.html').test(document.location.href);
+    let ifSingle = new RegExp('single.html').test(document.location.href);
+    if (ifProduct) {
+      let addToCart = new AddToCart();
+      let render = new Render(addToCart);
+      let filterProducts = new ServerFilterProducts(render);
+      let filtersHandle = new FiltersHandle(filterProducts);
+
+      filtersHandle.init(0, 1000, 1);
+
+    } else if (ifSingle) {
+
+      let addToCart = new AddToCart();
+      addToCart.init();
+    }
   })
 })(jQuery);
 
