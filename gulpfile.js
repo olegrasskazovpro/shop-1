@@ -14,6 +14,7 @@ const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const ftp = require('vinyl-ftp');
 const log = require('fancy-log');
+const jasmine = require('gulp-jasmine');
 
 // объект в который пропишем все нужные нам пути
 let path = {
@@ -117,6 +118,12 @@ gulp.task('fonts:build', function () {
     .pipe(gulp.dest(path.dist.fonts))
 });
 
+// Build json DB
+gulp.task('db:build', function () {
+  gulp.src(path.src.db)
+    .pipe(gulp.dest(path.dist.db))
+});
+
 // Deploy json DB
 gulp.task('db:deploy', function () {
 
@@ -137,12 +144,6 @@ gulp.task('db:deploy', function () {
 
 });
 
-// Build json DB
-gulp.task('db:build', function () {
-  gulp.src(path.src.db)
-    .pipe(gulp.dest(path.dist.db))
-});
-
 // Build ALL
 gulp.task('build', [
   'db:build',
@@ -161,7 +162,7 @@ gulp.task('watch', function () {
   gulp.watch(path.watch.js, ['js:build']);
   gulp.watch(path.watch.img, ['img:build']);
   gulp.watch(path.watch.fonts, ['fonts:build']);
-  // gulp.watch(path.watch.db, ['db:deploy']);
+  gulp.watch(path.watch.db, ['db:build']);
 });
 
 // Create web-server
