@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * Get all product's filters and send it to server (json)
  */
@@ -296,7 +294,6 @@ class ServerFilterProducts {
    */
   filterCatalog() {
     let filteredCatalog = [];
-    console.log('177');
     this.postFiltered(this.filteredCatalog); // clean previous filtered catalog
 
     for (let i = 0; i < this.catalog.length; i++) { // and filter with them catalog. Intermediate results put
@@ -309,8 +306,8 @@ class ServerFilterProducts {
         this.checkProdBySize(this.filters.size, this.catalog[i].size) &&
         this.checkProdByPrice(this.filters.price, this.catalog[i].price)
       ) {
-        // add this product to this.filteredCatalog
-        filteredCatalog.push(this.catalog[i]);
+
+        filteredCatalog.push(this.catalog[i]); // add this product to this.filteredCatalog
       }
     }
 
@@ -411,9 +408,10 @@ class ServerFilterProducts {
 }
 
 class Render {
-  constructor() {
+  constructor(addToCart) {
     this.el = null;
     this.products = [];
+    this.addToCart = addToCart;
   }
 
   init() {
@@ -435,11 +433,15 @@ class Render {
     })
   }
 
+  /**
+   * Render filtered catalog with pagination and set for filtered catalog addToCartHandler
+   * @param data
+   */
   render(data) {
     this.setPagination(data);
     this.cleanProducts();
-    this.renderProducts(data);// fill template
-    // append el
+    this.renderProducts(data);
+    this.addToCart.init();
   }
 
   /**
@@ -459,6 +461,7 @@ class Render {
         oneProd.querySelector('.product_href').href = data[page][i].href;
         oneProd.querySelector('.product-img').src = data[page][i].img[0];
         oneProd.querySelector('.product-img').alt = data[page][i].name;
+        oneProd.querySelector('.product-to-cart').id = data[page][i].id;
         oneProd.getElementsByTagName('h3')[0].textContent = data[page][i].name;
         oneProd.getElementsByTagName('h4')[0].textContent = '$' + data[page][i].price + '.00';
         oneProd.classList.remove('template');
@@ -468,9 +471,6 @@ class Render {
     } else {
       $('#oops').removeClass('template');
     }
-
-      
-    //TODO если товары не найдены - выводить сообщение об этом
   }
 
   /**
@@ -516,7 +516,6 @@ class Render {
 
     this.urlPagination(data);
     this.paginationNumHandler(data);
-    // this.paginationArrowsHandler(data);
   }
   /**
    * Check if URL has page_* and set active page + add href to pagination slider arrows
@@ -585,14 +584,3 @@ class Render {
     });
   }
 }
-
-(function ($) {
-  $(function () {
-    let render = new Render();
-    let filterProducts = new ServerFilterProducts(render);
-    let filtersHandle = new FiltersHandle(filterProducts);
-
-    filtersHandle.init(0, 1000, 1);
-
-  })
-})(jQuery);
