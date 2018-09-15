@@ -55,10 +55,11 @@
 		<a href="cart.html"><img src="img/cart(1).svg" alt="cart"></a>
 		<div class="triangle"></div>
 		<div class="drop-down">
-		  <div class="cart-added">
-			<a href="single.html"><img src="img/cart-img-1.jpg" alt="Rebox Zane"></a>
+		  <div class="cart-container"></div>
+		  <div class="cart-added cart-item template">
+			<a href="single.html" class="cart-item-href"><img src="img/cart-img-1.jpg" alt="Rebox Zane" class="cart-item-img"></a>
 			<div class="desc">
-			  <a href="single.html">Rebox Zane</a>
+			  <a href="single.html" class="cart-item-name cart-item-href"></a>
 			  <div class="stars">
 				<img src="img/star.svg" alt="">
 				<img src="img/star.svg" alt="">
@@ -67,29 +68,13 @@
 				<img src="img/star.svg" alt="">
 				<div class="rate"></div>
 			  </div>
-			  <span>1 x $250</span>
+			  <div><span class="cart-item-quantity"></span><span> x $</span><span class="cart-item-price"></span></div>
 			</div>
-			<button><i class="fa fa-times-circle"></i></button>
-		  </div>
-		  <div class="cart-added">
-			<a href="single.html"><img src="img/cart-img-2.jpg" alt="Rebox Zane"></a>
-			<div class="desc">
-			  <a href="single.html">Rebox Zane</a>
-			  <div class="stars">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<div class="rate"></div>
-			  </div>
-			  <span>1 x $250</span>
-			</div>
-			<button><i class="fa fa-times-circle"></i></button>
+			<button class="cart-item-del"><i class="fa fa-times-circle"></i></button>
 		  </div>
 		  <div class="total">
 			<p>TOTAL</p>
-			<p>$500.00</p>
+			<p>$<span class="cart-total"></span>.00</p>
 		  </div>
 		  <a href="checkout.html" class="button">Checkout</a>
 		  <a href="cart.html" class="button">Go to cart</a>

@@ -55,10 +55,11 @@
 		<a href="cart.html"><img src="img/cart(1).svg" alt="cart"></a>
 		<div class="triangle"></div>
 		<div class="drop-down">
-		  <div class="cart-added">
-			<a href="single.html"><img src="img/cart-img-1.jpg" alt="Rebox Zane"></a>
+		  <div class="cart-container"></div>
+		  <div class="cart-added cart-item template">
+			<a href="single.html" class="cart-item-href"><img src="img/cart-img-1.jpg" alt="Rebox Zane" class="cart-item-img"></a>
 			<div class="desc">
-			  <a href="single.html">Rebox Zane</a>
+			  <a href="single.html" class="cart-item-name cart-item-href"></a>
 			  <div class="stars">
 				<img src="img/star.svg" alt="">
 				<img src="img/star.svg" alt="">
@@ -67,29 +68,13 @@
 				<img src="img/star.svg" alt="">
 				<div class="rate"></div>
 			  </div>
-			  <span>1 x $250</span>
+			  <div><span class="cart-item-quantity"></span><span> x $</span><span class="cart-item-price"></span></div>
 			</div>
-			<button><i class="fa fa-times-circle"></i></button>
-		  </div>
-		  <div class="cart-added">
-			<a href="single.html"><img src="img/cart-img-2.jpg" alt="Rebox Zane"></a>
-			<div class="desc">
-			  <a href="single.html">Rebox Zane</a>
-			  <div class="stars">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<img src="img/star.svg" alt="">
-				<div class="rate"></div>
-			  </div>
-			  <span>1 x $250</span>
-			</div>
-			<button><i class="fa fa-times-circle"></i></button>
+			<button class="cart-item-del"><i class="fa fa-times-circle"></i></button>
 		  </div>
 		  <div class="total">
 			<p>TOTAL</p>
-			<p>$500.00</p>
+			<p>$<span class="cart-total"></span>.00</p>
 		  </div>
 		  <a href="checkout.html" class="button">Checkout</a>
 		  <a href="cart.html" class="button">Go to cart</a>
@@ -355,82 +340,36 @@
                 <th>Subtotal</th>
                 <th>ACTION</th>
             </tr>
+            <tr class="cart-item template">
+                <td>
+                    <a href="" class="cart__a cart-item-href"><img src="" alt="" class="cart__img cart-item-img"></a>
+                    <div class="cart__desc">
+                        <a href="" class="cart__a cart-item-href cart-item-name"></a>
+                        <div class="stars cart__stars">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <img src="img/star.svg" alt="">
+                            <div class="rate"></div>
+                        </div>
+                        <p><span>Color:</span> Red</p>
+                        <p><span>Size:</span> Xll</p>
+                    </div>
+                </td>
+                <td>$<span class="cart-item-price"></span></td>
+                <td><input type="number" min="0" max="99" value="" class="input-number input-number__cart cart-item-quantity"></td>
+                <td>FREE</td>
+                <td>$<span class="cart-item-subtotal"></span></td>
+                <td><button class="cart-item-del"><i class="fa fa-times-circle"></i></button></td>
+            </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <a href="single.html" class="cart__a"><img src="img/cart-table-1.jpg" alt="cart-table-1" class="cart__img"></a>
-                    <div class="cart__desc">
-                        <a href="single.html" class="cart__a">Mango  People  T-shirt</a>
-                        <div class="stars cart__stars">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <div class="rate"></div>
-                        </div>
-                        <p><span>Color:</span> Red</p>
-                        <p><span>Size:</span> Xll</p>
-                    </div>
-                </td>
-                <td>$150</td>
-                <td><input type="number" min="0" max="99" value="2" class="input-number input-number__cart"></td>
-                <td>FREE</td>
-                <td>$300</td>
-                <td><button><i class="fa fa-times-circle"></i></button></td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="single.html" class="cart__a"><img src="img/cart-table-2.jpg" alt="cart-table-2" class="cart__img"></a>
-                    <div class="cart__desc">
-                        <a href="single.html" class="cart__a">Mango  People  T-shirt</a>
-                        <div class="stars cart__stars">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <div class="rate"></div>
-                        </div>
-                        <p><span>Color:</span> Red</p>
-                        <p><span>Size:</span> Xll</p>
-                    </div>
-                </td>
-                <td>$150</td>
-                <td><input type="number" min="0" max="99" value="2" class="input-number input-number__cart"></td>
-                <td>FREE</td>
-                <td>$300</td>
-                <td><button><i class="fa fa-times-circle"></i></button></td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="single.html" class="cart__a"><img src="img/cart-table-3.jpg" alt="cart-table-3" class="cart__img"></a>
-                    <div class="cart__desc">
-                        <a href="single.html" class="cart__a">Mango  People  T-shirt</a>
-                        <div class="stars cart__stars">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <img src="img/star.svg" alt="">
-                            <div class="rate"></div>
-                        </div>
-                        <p><span>Color:</span> Red</p>
-                        <p><span>Size:</span> Xll</p>
-                    </div>
-                </td>
-                <td>$150</td>
-                <td><input type="number" min="0" max="99" value="2" class="input-number input-number__cart"></td>
-                <td>FREE</td>
-                <td>$300</td>
-                <td><button><i class="fa fa-times-circle"></i></button></td>
-            </tr>
+            <tbody class="cart-container">
             </tbody>
         </table>
         <div class="cart-buttons">
             <a href="#">CLEAR SHOPPING CART</a>
-            <a href="#">CONTINUE SHOPPING</a>
+            <a href="product.html">CONTINUE SHOPPING</a>
         </div>
         <div class="order">
             <form>
@@ -456,12 +395,12 @@
             <div class="total-block">
                 <div class="total-table">
                     <div>
-                        <p>Sub total</p>
-                        <p>$900</p>
+                        <p class="total-table__sub">Sub total</p>
+                        <p class="total-table__sub">$<span class="cart-total">900</span></p>
                     </div>
                     <div>
-                        <p>GRAND TOTAL</p>
-                        <p><span>$900</span></p>
+                        <p class="total-table__grand">GRAND TOTAL</p>
+                        <p class="total-table__grand total-table__grand_pink">$<span class="cart-total">900</span></p>
                     </div>
                 </div>
                 <a href="checkout.html">proceed to checkout</a>
