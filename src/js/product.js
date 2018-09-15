@@ -2,7 +2,7 @@
  * Get all product's filters and send it to server (json)
  */
 class FiltersHandle {
-  constructor(callback) {
+  constructor() {
     this.filters = {
       catItem: null, // string
       category: null, // 'all' or string
@@ -12,10 +12,14 @@ class FiltersHandle {
       price: [], // [a, b]
       showBy: null,
     };
-    this.callback = callback;
+    this.config = {
+      url: {},
+      selectors: {},
+    };
   }
 
-  init(min, max, step) {
+  init(min, max, step, config) {
+    this.config = config;
     this.setCookiesFilters();
     this.initPriceSlider(min, max, step);
     this.filters.catItem = this.getCatItem();
@@ -228,13 +232,14 @@ class FiltersHandle {
    */
   postFilters(data) {
     $.ajax({
-      url: 'http://localhost:3002/filters',
+      url: this.config.url.filters,
       method: 'POST',
       contentType: "application/json",
       data: JSON.stringify(data),
       success: () => {
         console.log('Product filters was SENT to DB');
-        this.callback.init();
+        let serverFilterProducts = new ServerFilterProducts();
+        serverFilterProducts.init(this.config);
       },
       error: () => {
         console.log('Product filters sending to DB FAILED');
@@ -247,19 +252,23 @@ class FiltersHandle {
  * Server side work emulation - filters catalog with filters and save result to DB
  */
 class ServerFilterProducts {
-  constructor(callback) {
+  constructor() {
     this.filters = {};
     this.catalog = {};
-    this.render = callback;
+    this.config = {
+      url: {},
+      selectors: {},
+    };
   }
 
-  init() {
+  init(config) {
+    this.config = config;
     this.getFilters()
   }
 
   getFilters() {
     $.ajax({
-      url: 'http://localhost:3002/filters',
+      url: this.config.url.filters,
       method: 'GET',
       dataType: 'json',
       success: data => {
@@ -275,7 +284,7 @@ class ServerFilterProducts {
 
   getCatalog() {
     $.ajax({
-      url: 'http://localhost:3000/products',
+      url: this.config.url.products,
       method: 'GET',
       dataType: 'json',
       success: data => {
@@ -294,7 +303,7 @@ class ServerFilterProducts {
    */
   filterCatalog() {
     let filteredCatalog = [];
-    this.postFiltered(this.filteredCatalog); // clean previous filtered catalog
+    this.postFiltered({}); // clean previous filtered catalog
 
     for (let i = 0; i < this.catalog.length; i++) { // and filter with them catalog. Intermediate results put
       // check if the product satisfy all filters
@@ -387,7 +396,7 @@ class ServerFilterProducts {
 
   postFiltered(data) {
     $.ajax({
-      url: 'http://localhost:3002/filteredProducts',
+      url: this.config.url.filteredProducts,
       method: 'POST',
       contentType: "application/json",
       data: JSON.stringify(data),
@@ -396,7 +405,8 @@ class ServerFilterProducts {
           console.log('Filtered catalog DB cleaned');
         } else {
           console.log('Filtered catalog posted to DB');
-          this.render.init()
+          let render = new Render();
+          render.init(this.config);
         }
         //this.callback.getFilters(); // сюда передать коллбэк для отображения в фронтэнде
       },
@@ -408,19 +418,23 @@ class ServerFilterProducts {
 }
 
 class Render {
-  constructor(addToCart) {
+  constructor() {
     this.el = null;
     this.products = [];
-    this.addToCart = addToCart;
+    this.config = {
+      url: {},
+      selectors: {},
+    };
   }
 
-  init() {
+  init(config) {
+    this.config = config;
     this.getFilteredCatalog();
   }
 
   getFilteredCatalog() {
     $.ajax({
-      url: 'http://localhost:3002/filteredProducts',
+      url: this.config.url.filteredProducts,
       method: 'GET',
       dataType: 'json',
       success: data => {
@@ -432,7 +446,6 @@ class Render {
       }
     })
   }
-
   /**
    * Render filtered catalog with pagination and set for filtered catalog addToCartHandler
    * @param data
@@ -441,7 +454,9 @@ class Render {
     this.setPagination(data);
     this.cleanProducts();
     this.renderProducts(data);
-    this.addToCart.init();
+
+    let cart = new Cart();
+    cart.init(this.config);
   }
 
   /**
@@ -465,7 +480,7 @@ class Render {
         oneProd.getElementsByTagName('h3')[0].textContent = data[page][i].name;
         oneProd.getElementsByTagName('h4')[0].textContent = '$' + data[page][i].price + '.00';
         oneProd.classList.remove('template');
-        // this.products.push(this.el);
+
         document.querySelector('.product-box').appendChild(oneProd);
       }
     } else {

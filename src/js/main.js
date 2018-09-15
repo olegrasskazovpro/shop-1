@@ -1,7 +1,7 @@
 "use strict";
 
 class SetActiveLinks {
-  constructor () {
+  constructor() {
 
   }
 
@@ -9,13 +9,13 @@ class SetActiveLinks {
    * Set class="active" to nav links for page opened
    */
   setActiveClass() {
-    if (this.checkUrl('product.html')){
+    if (this.checkUrl('product.html')) {
       $('.menu a').removeAttr('class');
       $('.menu>li a[href="product.html"]').addClass('menu-active');
       $('.mega-list a:first').addClass('active');
       $('.mega a:first').addClass('active');
     }
-    if(this.checkUrl('index.html')){
+    if (this.checkUrl('index.html')) {
       $('.menu>li a[href="index.html"]').addClass('menu-active');
     }
   }
@@ -32,17 +32,18 @@ class SetActiveLinks {
 }
 
 class Carousel {
-  constructor () {}
+  constructor() {
+  }
 
   init() {
     $('.jcarousel').jcarousel({
       wrap: 'circular'
     });
-    $('.jcarousel-prev').click(function() {
+    $('.jcarousel-prev').click(function () {
       $('.jcarousel').jcarousel('scroll', '-=1');
     });
 
-    $('.jcarousel-next').click(function() {
+    $('.jcarousel-next').click(function () {
       $('.jcarousel').jcarousel('scroll', '+=1');
     });
   }
@@ -58,18 +59,38 @@ class Carousel {
 
     let ifProduct = new RegExp('product.html').test(document.location.href);
     let ifSingle = new RegExp('single.html').test(document.location.href);
+    let config = {
+      url: {
+        products: 'http://localhost:3000/products',
+        filters: 'http://localhost:3002/filters',
+        filteredProducts: 'http://localhost:3002/filteredProducts',
+        cart: 'http://localhost:3001/cart',
+      },
+      selectors: {
+        addToCart: '.addToCart',
+        cart: '.cart-container',
+        item: '.cart-item.template',
+        href: '.cart-item-href',
+        img: '.cart-item-img',
+        name: '.cart-item-name',
+        quantity: '.cart-item-quantity',
+        price: '.cart-item-price',
+        del: '.cart-item-del',
+        rate: '.rate',
+        subtotal: '.cart-item-subtotal',
+        total: '.cart-total',
+        displayNone: 'template',
+      }
+    };
+
     if (ifProduct) {
-      let addToCart = new AddToCart();
-      let render = new Render(addToCart);
-      let filterProducts = new ServerFilterProducts(render);
-      let filtersHandle = new FiltersHandle(filterProducts);
+      let filtersHandle = new FiltersHandle();
 
-      filtersHandle.init(0, 1000, 1);
+      filtersHandle.init(0, 1000, 1, config);
 
-    } else if (ifSingle) {
-
-      let addToCart = new AddToCart();
-      addToCart.init();
+    } else {
+      let cart = new Cart();
+      cart.init(config);
     }
   })
 })(jQuery);

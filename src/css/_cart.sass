@@ -184,18 +184,18 @@
   text-align: right
   div
     display: table-row
-    &:first-child p
-      color: #4a4a4a
-      font-size: 11px
-      font-weight: 400
-      text-transform: uppercase
-    &:last-child p
-      padding: 10px 0 18px 0
-      color: $color-main
-      font-size: 16px
-      font-weight: 700
-      text-transform: uppercase
-    span
-      color: $color-pink
     p
       display: table-cell
+  &__sub
+    color: #4a4a4a !important
+    font-size: 11px !important
+    font-weight: 400 !important
+    text-transform: uppercase
+  &__grand
+    padding: 10px 0 18px 0 !important
+    color: $color-main !important
+    font-size: 16px !important
+    font-weight: 700 !important
+    text-transform: uppercase
+    &_pink
+      color: $color-pink !important

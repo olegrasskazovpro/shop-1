@@ -103,6 +103,9 @@
 
 .cart-header
   position: relative
+  &-div
+    //max-height: 60vh
+    //overflow: scroll
   .drop-down
     display: none
     padding-bottom: 5px
@@ -202,8 +205,6 @@
       left: $star-left * 3
     &:nth-child(5)
       left: $star-left * 4
-  &:hover .rate
-    width: 54px
 .rate
   position: absolute
   z-index: 1
@@ -398,7 +399,7 @@ nav
   border: 1px #e8e8e8 solid
   border-radius: 5px
   background-color: #fff
-
+  box-shadow: 0 0 1em black
 
 .drop-down-flex
   position: relative

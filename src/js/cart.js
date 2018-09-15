@@ -1,12 +1,12 @@
 "use strict";
 
-//TODO GET корзину
-//TODO render cart
+//TODO make add cart work for main page
+//TODO make add cart work for single page
 
-//TODO delete from cart
-//TODO GET cart - find - splice - total calc - POST cart
-
-class AddToCart {
+/**
+ * Get cart, render cart, add to cart, delete from cart
+ */
+class Cart {
   constructor() {
     this.catalog = {};
     this.cart = {
@@ -14,24 +14,33 @@ class AddToCart {
       countGoods: 0,
       contents: [],
     };
+    this.config = {
+      url: {},
+      selectors: {},
+    };
   }
 
-  init() {
-    this.getCart();
-    this.addToCartButtonHandler(this);
+  init(config) {
+    this.config = config;
+    this.getCart('', this.renderCart);
+    this.addToCartButtonHandler();
+    this.deleteButtonHandler();
+    this.quantityHandler('input' + this.config.selectors.quantity);
   }
 
-  renderHeaderCart(data) {
-    let renderHeaderCart = new RenderHeaderCart(data.contents, data.total);
+  renderCart() {
+    let renderCart = new RenderCart(this.cart.contents, this.cart.total);
 
-    renderHeaderCart.init();
+    renderCart.init(this.config.selectors);
   }
 
   /**
    * Find all "Add to cart" buttons and if clicked start callback with "id" as param
    */
-  addToCartButtonHandler(that) {
-    $('.addToCart').click(function (event) {
+  addToCartButtonHandler() {
+    let that = this;
+
+    $(this.config.selectors.addToCart).click(function (event) {
       event.preventDefault();
 
       let id = +this.getAttribute('id'); // found id of added product
@@ -40,23 +49,56 @@ class AddToCart {
   }
 
   deleteButtonHandler(){
-    $('.cart-div').on('click', '.cart-item-del', function (event) {
+    let that = this;
+    $('.cart-container').on('click', this.config.selectors.del, function (event) {
       event.preventDefault();
 
       let id = +this.getAttribute('id'); // found id of added product
-      that.getCatalog(id);
+      that.deleteFromCart(id);
     })
+  }
+
+  deleteFromCart(id){
+    let idx = this.checkInCart(id);
+
+    this.cart.contents.splice(idx, 1);
+    this.calcTotal();
+    this.postToCart(this.cart);
+    this.renderCart(this.cart);
+  }
+
+  /**
+   * If quantity input value changed (and loose focus) send to callback product id and new value
+   * @param String selector of quantity input
+   */
+  quantityHandler(selector){
+    let that = this;
+    $(document).on('change', selector, function () {
+      let id = +this.dataset.id;
+      let newVal = +this.value;
+
+      that.setNewQuantity.call(that, id, newVal)
+    })
+  }
+
+  setNewQuantity(id, newVal){
+    let idx = this.checkInCart(id);
+    this.cart.contents[idx].quantity = newVal;
+
+    this.calcTotal();
+    this.postToCart(this.cart);
+    this.renderCart(this.cart);
   }
 
   getCatalog(id) {
     $.ajax({
-      url: 'http://localhost:3000/products',
+      url: this.config.url.products,
       method: 'GET',
       dataType: 'json',
       success: data => {
         this.catalog = data;
         console.log('Got full catalog from JSON');
-        this.getCart(id);
+        this.getCart(id, this.getProdFromCatalog);
       },
       error: () => {
         console.log('Method getCatalog() FAILED');
@@ -68,18 +110,18 @@ class AddToCart {
    * Get cart from JSON and do getProdFromCatalog(id) or render cart
    * @param number id - id of product that addToCart button was clicked
    */
-  getCart(id) {
+  getCart(id, callback) {
     $.ajax({
-      url: `http://localhost:3001/cart`,
+      url: this.config.url.cart,
       method: 'GET',
       dataType: 'json',
       success: data => {
         this.cart = data;
         if (id) {
-          this.getProdFromCatalog(id);
+          callback.call(this, id);
         } else {
           console.log('Initial cart rendering');
-          this.renderHeaderCart(data);
+          callback.call(this);
         }
       },
       error: () => {
@@ -125,7 +167,7 @@ class AddToCart {
 
     this.calcTotal();
     this.postToCart(this.cart);
-    this.renderHeaderCart(this.cart)
+    this.renderCart(this.cart)
   }
 
   /**
@@ -158,6 +200,9 @@ class AddToCart {
 
         this.cart.total += price * quantity;
       }
+    } else {
+      this.cart.total = 0;
+      this.cart.countGoods = 0;
     }
   }
 
@@ -167,7 +212,7 @@ class AddToCart {
    */
   postToCart(data) {
     $.ajax({
-      url: `http://localhost:3001/cart`,
+      url: this.config.url.cart,
       method: 'POST',
       contentType: "application/json",
       data: JSON.stringify(data),
@@ -182,15 +227,15 @@ class AddToCart {
 }
 
 /**
- * Create and return one cart item
+ * Find cart div and cart item template, clone template and fill it with cart items data, append it to DOM
  */
-class RenderHeaderCart {
+class RenderCart {
   constructor(items, total){
     this.items = items;
     this.total = total;
     this.selectors = {
-      cart: '.cart-div',
-      item: '.cart-item-in-header',
+      cart: '.cart-container',
+      item: '.cart-item.template',
       href: '.cart-item-href',
       img: '.cart-item-img',
       name: '.cart-item-name',
@@ -198,38 +243,49 @@ class RenderHeaderCart {
       price: '.cart-item-price',
       del: '.cart-item-del',
       rate: '.rate',
+      subtotal: '.cart-item-subtotal',
       total: '.cart-total',
       displayNone: 'template',
     };
   }
 
-  init(){
-    this.clearCartDOM(this.selectors.cart);
+  init(selectors){
+    this.selectors = selectors;
+    let cartNodes = document.querySelectorAll(this.selectors.cart);
+    let ItemNodes = document.querySelectorAll(this.selectors.item);
 
-    for (let cartItem, i = 0; i < this.items.length; i++) {
-      cartItem = this.cloneNode(this.selectors.item);
+    for (let i = 0; i < cartNodes.length; i++) {
+      let cartNode = cartNodes[i];
+      let itemNode = ItemNodes[i];
 
-      this.setImg(this.selectors.img, cartItem, this.items[i]);
-      this.setName(this.selectors.name, cartItem, this.items[i]);
-      this.setHref(this.selectors.href, cartItem, this.items[i].href);
-      this.setQuantity(this.selectors.quantity, cartItem, this.items[i]);
-      this.setPrice(this.selectors.price, cartItem, this.items[i]);
-      this.fillRateStars(this.selectors.rate, cartItem, this.items[i].rating);
-      this.setDeleteButtonId(this.selectors.del, cartItem, this.items[i]);
+      this.clearCartContainer(cartNode);
 
-      this.displayNoneDelete(this.selectors.displayNone, cartItem);
-      this.itemAppend(this.selectors.cart, cartItem);
+      for (let cartItem, i = 0; i < this.items.length; i++) {
+        cartItem = this.cloneNode(itemNode);
+
+        this.setImg(this.selectors.img, cartItem, this.items[i]);
+        this.setName(this.selectors.name, cartItem, this.items[i]);
+        this.setHref(this.selectors.href, cartItem, this.items[i].href);
+        this.setQuantity(this.selectors.quantity, cartItem, this.items[i]);
+        this.setPrice(this.selectors.price, cartItem, this.items[i]);
+        this.fillRateStars(this.selectors.rate, cartItem, this.items[i].rating);
+        this.setDeleteButtonId(this.selectors.del, cartItem, this.items[i]);
+        this.setSubTotal(this.selectors.subtotal, cartItem, this.items[i]);
+
+        this.displayNoneDelete(this.selectors.displayNone, cartItem);
+        this.itemAppend(cartNode, cartItem);
+      }
+
+      this.showTotalPrice(this.selectors.total, this.total);
     }
-
-    this.showTotalPrice(this.selectors.total, this.total);
   }
 
-  clearCartDOM(selector){
-    document.querySelector(selector).innerHTML = '';
+  clearCartContainer(node){
+    node.innerHTML = '';
   }
 
-  cloneNode(selector){
-    return $(selector)[0].cloneNode(true);
+  cloneNode(itemNode){
+    return itemNode.cloneNode(true);
   }
 
   setImg(selector, cartItem, product){
@@ -248,15 +304,20 @@ class RenderHeaderCart {
    * @param href
    */
   setHref(selector, cartItem, href){
-    let aCollection = cartItem.querySelector(selector);
+    let aCollection = cartItem.querySelectorAll(selector);
 
     for (let i = 0; i < aCollection.length; i++) {
       aCollection[i].href = href;
     }
   }
 
-  setQuantity(selector, cartItem, product){
-    cartItem.querySelector(selector).textContent = product.quantity;
+  setQuantity(selector, cartItem, item){
+    if (cartItem.localName === 'div') {
+      cartItem.querySelector(selector).textContent = item.quantity;
+    } else if (cartItem.localName === 'tr') {
+      cartItem.querySelector(selector).value = item.quantity;
+      cartItem.querySelector(selector).dataset.id = item.id;
+    }
   }
 
   setPrice(selector, cartItem, product){
@@ -268,6 +329,13 @@ class RenderHeaderCart {
     cartItem.querySelector(selector).style = `width: calc(${maxWidth} / 5 * ${rating})`;
   }
 
+  setSubTotal(selector, cartItem, product){
+    if (cartItem.querySelector(selector)) {
+      let sub = product.price * product.quantity;
+      cartItem.querySelector(selector).textContent = sub;
+    }
+}
+
   setDeleteButtonId(selector, cartItem, product){
     cartItem.querySelector(selector).id = product.id;
   }
@@ -276,34 +344,16 @@ class RenderHeaderCart {
     cartItem.classList.remove(selector);
   }
 
-  itemAppend(selector, item){
-    document.querySelector(selector).appendChild(item);
+  itemAppend(cartNode, item){
+    cartNode.appendChild(item);
   }
 
   showTotalPrice(selector, total){
+    let totalNodes = document.querySelectorAll(selector);
+
+    totalNodes.forEach(elem => {
+      elem.textContent = total;
+    });
     document.querySelector(selector).textContent = total;
   }
 }
-
-class DelFromCart {
-  constructor() {
-
-  }
-
-  //set button click handler
-
-}
-
-
-(function ($) {
-  $(function () {
-
-    // Найти кнопку по классу addToCart
-    // Повесить на нее обработчик - клик добавляет в корзину
-    // Получить GET из catalogData.json товар по ID
-    // И запушить его POST в cart.json - contents
-    // Посчитать в корзине число товаров countGoods и сумму стоимостей total
-
-    // let addToCart = new AddToCart();
-  })
-})(jQuery);
