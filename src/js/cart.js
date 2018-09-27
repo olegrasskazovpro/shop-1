@@ -91,19 +91,20 @@ class Cart {
   }
 
   getCatalog(id) {
-    $.ajax({
-      url: this.config.url.products,
-      method: 'GET',
-      dataType: 'json',
-      success: data => {
-        this.catalog = data;
-        console.log('Got full catalog from JSON');
-        this.getCart(id, this.getProdFromCatalog);
-      },
-      error: () => {
-        console.log('Method getCatalog() FAILED');
-      }
-    })
+		let getAndPost = new GetAndPost();
+
+		let url = this.config.url.products;
+		let successCallback = response => {
+			this.catalog = response;
+			console.log('93 - Got full catalog from JSON');
+			this.getCart(id, this.getProdFromCatalog);
+		};
+
+		let errorCallback = response => {
+			console.log('103 - Method getCatalog() of getting catalog FAILED');
+		};
+
+		getAndPost.get(url, successCallback, errorCallback);
   }
 
   /**
@@ -111,23 +112,24 @@ class Cart {
    * @param number id - id of product that addToCart button was clicked
    */
   getCart(id, callback) {
-    $.ajax({
-      url: this.config.url.cart,
-      method: 'GET',
-      dataType: 'json',
-      success: data => {
-        this.cart = data;
-        if (id) {
-          callback.call(this, id);
-        } else {
-          console.log('Initial cart rendering');
-          callback.call(this);
-        }
-      },
-      error: () => {
-        console.log('Method getCart() FAILED');
-      }
-    })
+		let getAndPost = new GetAndPost();
+
+		let url = this.config.url.cart;
+		let successCallback = response => {
+			this.cart = response;
+			if (id) {
+				callback.call(this, id);
+			} else {
+				console.log('114 - Initial cart rendering start');
+				callback.call(this);
+			}
+		};
+
+		let errorCallback = response => {
+			console.log('114 - Method getCatalog() of getting catalog FAILED');
+		};
+
+		getAndPost.get(url, successCallback, errorCallback);
   }
 
   /**
@@ -211,18 +213,16 @@ class Cart {
    * @param {} data - cart data
    */
   postToCart(data) {
-    $.ajax({
-      url: this.config.url.cart,
-      method: 'POST',
-      contentType: "application/json",
-      data: JSON.stringify(data),
-      success: () => {
-        console.log('Cart was SENT to DB');
-      },
-      error: () => {
-        console.log('Cart sending to DB FAILED');
-      }
-    })
+		let getAndPost = new GetAndPost();
+		let url = this.config.url.cart;
+		let successCallback = () => {
+			console.log('215 - Cart was SENT to DB');
+		};
+		let errorCallback = () => {
+			console.log('Cart sending to DB FAILED');
+		};
+
+		getAndPost.post(url, data, successCallback, errorCallback);
   }
 }
 
