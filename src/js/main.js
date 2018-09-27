@@ -31,6 +31,56 @@ class SetActiveLinks {
   }
 }
 
+/**
+ * Working with json databases - GETting from and POSTing to it
+ */
+class GetAndPost {
+	constructor() {
+
+	}
+
+	/**
+   * GETs data from DB
+	 * @param String url for GET request
+	 * @param successCallback - what to do if GET request succeed
+	 * @param errorCallback - what to do if GET request failed
+	 */
+	get(url, successCallback, errorCallback) {
+		$.ajax({
+			url: url,
+			method: 'GET',
+			dataType: 'json',
+			success: response => {
+				successCallback.call(this, response);
+			},
+			error: response => {
+				errorCallback(response);
+			}
+		})
+	}
+
+	/**
+	 * POSTs data to DB
+	 * @param String url for POST request
+	 * @param successCallback - what to do if POST request succeed
+	 * @param errorCallback - what to do if POST request failed
+	 */
+	post(url, data, successCallback, errorCallback) {
+		$.ajax({
+			url: url,
+			method: 'POST',
+			contentType: "application/json",
+			data: JSON.stringify(data),
+			success: response => {
+				successCallback(response, data);
+			},
+			error: response => {
+				errorCallback(response);
+			}
+		})
+	}
+}
+
 class Carousel {
   constructor() {
   }
@@ -62,38 +112,59 @@ class Carousel {
     let config = {
       url: {
         products: 'http://localhost:3000/products',
-        filters: 'http://localhost:3002/filters',
-        filteredProducts: 'http://localhost:3002/filteredProducts',
-        cart: 'http://localhost:3001/cart',
+        filters: 'http://localhost:3003/filters',
+        filteredProducts: 'http://localhost:3003/filteredProducts',
+        cart: 'http://localhost:3002/cart',
       },
       selectors: {
+				active: "active",
         addToCart: '.addToCart',
         cart: '.cart-container',
-        item: '.cart-item.template',
-        href: '.cart-item-href',
+				del: '.cart-item-del',
+				displayNone: 'template',
+				featuredProducts: ".featured-products",
+				href: '.cart-item-href',
         img: '.cart-item-img',
+				item: '.cart-item.template',
         name: '.cart-item-name',
         quantity: '.cart-item-quantity',
         price: '.cart-item-price',
-        del: '.cart-item-del',
         rate: '.rate',
         subtotal: '.cart-item-subtotal',
         total: '.cart-total',
-        displayNone: 'template',
+				oops: "#oops",
+        pagination: '#pagination',
+        pageL: '.page-left-button',
+        pageR: '.page-right-button',
+        productsDiv: ".product-box",
+        productItem: ".product-box-a",
+        productHref: ".product_href",
+        productName: ".product-name",
+        productPrice: ".product-price",
+        productImg: ".product-img",
+				relatedProd: ".you-may-like",
+				singleAddToCart: ".single-desc-button",
       }
     };
 
     if (ifProduct) {
       let filtersHandle = new FiltersHandle();
-
       filtersHandle.init(0, 1000, 1, config);
-
     } else {
       let cart = new Cart();
       cart.init(config);
     }
+
+    if($('.featured-products')[0]){
+    	let renderFilteredProducts = new RenderFilteredProducts(config, 'featured');
+    	renderFilteredProducts.init();
+		} else if ($('.you-may-like')[0]){
+			let renderFilteredProducts = new RenderFilteredProducts(config, 'related');
+			renderFilteredProducts.init();
+		}
   })
 })(jQuery);
+
 
 //= product.js
 
