@@ -27,7 +27,8 @@
         "img/products/man-1.jpg"
       ],
       "rating": 2.3,
-      "trending": "Lace"
+      "trending": "Lace",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 2,
@@ -57,7 +58,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 3,
-      "trending": "Lace"
+      "trending": "Lace",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 3,
@@ -86,7 +88,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 4,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": []
     },
     {
       "id": 4,
@@ -114,7 +117,8 @@
         "img/products/man-2.jpg"
       ],
       "rating": 1,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 5,
@@ -140,7 +144,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 5,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 6,
@@ -168,7 +173,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 7,
@@ -199,7 +205,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 2.5,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 8,
@@ -230,7 +237,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 3.5,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 9,
@@ -261,7 +269,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 4,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 10,
@@ -292,7 +301,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 11,
@@ -323,7 +333,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 12,
@@ -354,7 +365,8 @@
         "img/products/man-4.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 13,
@@ -383,7 +395,8 @@
         "img/product-1.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 14,
@@ -412,7 +425,8 @@
         "img/product-2.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 15,
@@ -441,7 +455,8 @@
         "img/product-3.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 16,
@@ -470,7 +485,8 @@
         "img/product-4.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 17,
@@ -499,7 +515,8 @@
         "img/product-5.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 18,
@@ -528,7 +545,8 @@
         "img/product-6.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 19,
@@ -557,7 +575,8 @@
         "img/product-7.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
     },
     {
       "id": 20,
@@ -586,7 +605,128 @@
         "img/product-8.jpg"
       ],
       "rating": 4.3,
-      "trending": "Bohemian"
+      "trending": "Bohemian",
+      "relatedProdId": [21,22,23,24]
+    },
+    {
+      "id": 21,
+      "catItem": "Woman",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "href": "single.html",
+      "tag": "",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 120,
+      "img": [
+        "img/woman-1.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian",
+      "relatedProdId": []
+    },
+    {
+      "id": 22,
+      "catItem": "Woman",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "href": "single.html",
+      "tag": "",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 120,
+      "img": [
+        "img/woman-2.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian",
+      "relatedProdId": []
+    },
+    {
+      "id": 23,
+      "catItem": "Woman",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "href": "single.html",
+      "tag": "",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 120,
+      "img": [
+        "img/woman-3.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian",
+      "relatedProdId": []
+    },
+    {
+      "id": 24,
+      "catItem": "Woman",
+      "category": "Jackets & Coats",
+      "brand": "Marko Polo",
+      "designer": "Designer 1",
+      "name": "Mango people T-short",
+      "href": "single.html",
+      "tag": "",
+      "color": [
+        "red",
+        "yellow",
+        "green"
+      ],
+      "size": [
+        "XXL",
+        "XL",
+        "L",
+        "S",
+        "XS",
+        "XXS"
+      ],
+      "price": 120,
+      "img": [
+        "img/woman-4.jpg"
+      ],
+      "rating": 4.3,
+      "trending": "Bohemian",
+      "relatedProdId": []
     }
   ]
 }
