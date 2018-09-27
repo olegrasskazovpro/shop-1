@@ -120,6 +120,8 @@ class Carousel {
 				active: "active",
         addToCart: '.addToCart',
         cart: '.cart-container',
+        cartClear: '.cart-clear',
+        cartHeaderImg: '.cart-header-img',
 				del: '.cart-item-del',
 				displayNone: 'template',
 				featuredProducts: ".featured-products",

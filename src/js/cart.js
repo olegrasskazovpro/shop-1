@@ -25,6 +25,7 @@ class Cart {
     this.getCart('', this.renderCart);
     this.addToCartButtonHandler();
     this.deleteButtonHandler();
+    this.clearCartButtonHandler();
     this.quantityHandler('input' + this.config.selectors.quantity);
   }
 
@@ -45,12 +46,17 @@ class Cart {
 
       let id = +this.getAttribute('id'); // found id of added product
       that.getCatalog(id);
+      that.animateCart(that.config.selectors.cartHeaderImg);
     })
+  }
+
+  animateCart(selector){
+    $(selector).effect('bounce', 'slow')
   }
 
   deleteButtonHandler(){
     let that = this;
-    $('.cart-container').on('click', this.config.selectors.del, function (event) {
+    $(this.config.selectors.cart).on('click', this.config.selectors.del, function (event) {
       event.preventDefault();
 
       let id = +this.getAttribute('id'); // found id of added product
@@ -58,13 +64,31 @@ class Cart {
     })
   }
 
+	clearCartButtonHandler(){
+		$(this.config.selectors.cartClear).click(() => {
+			event.preventDefault();
+
+			this.cart = {
+				total: 0,
+				countGoods: 0,
+				contents: [],
+			};
+			this.calcTotal(this.cart);
+			this.postToCart(this.cart);
+			this.renderCart(this.cart);
+			debugger;
+			this.animateCart(this.config.selectors.cartHeaderImg);
+		})
+	}
+
   deleteFromCart(id){
     let idx = this.checkInCart(id);
 
     this.cart.contents.splice(idx, 1);
-    this.calcTotal();
+    this.calcTotal(this.cart);
     this.postToCart(this.cart);
     this.renderCart(this.cart);
+		this.animateCart(this.config.selectors.cartHeaderImg);
   }
 
   /**
@@ -85,7 +109,7 @@ class Cart {
     let idx = this.checkInCart(id);
     this.cart.contents[idx].quantity = newVal;
 
-    this.calcTotal();
+    this.calcTotal(this.cart);
     this.postToCart(this.cart);
     this.renderCart(this.cart);
   }
@@ -167,7 +191,7 @@ class Cart {
       this.cart.contents.push(newToCart)
     }
 
-    this.calcTotal();
+    this.calcTotal(this.cart);
     this.postToCart(this.cart);
     this.renderCart(this.cart)
   }
@@ -191,20 +215,20 @@ class Cart {
   /**
    * Calculate total and countGoods values and save it to this.cart
    */
-  calcTotal() {
-    if (this.cart.contents.length) {
-      this.cart.countGoods = this.cart.contents.length;
+  calcTotal(cart) {
+    if (cart.contents.length) {
+      cart.countGoods = cart.contents.length;
 
-      this.cart.total = 0;
-      for (let i = 0; i < this.cart.contents.length; i++) {
-        let price = this.cart.contents[i].price;
-        let quantity = this.cart.contents[i].quantity;
+      cart.total = 0;
+      for (let i = 0; i < cart.contents.length; i++) {
+        let price = cart.contents[i].price;
+        let quantity = cart.contents[i].quantity;
 
-        this.cart.total += price * quantity;
+        cart.total += price * quantity;
       }
     } else {
-      this.cart.total = 0;
-      this.cart.countGoods = 0;
+      cart.total = 0;
+      cart.countGoods = 0;
     }
   }
 
